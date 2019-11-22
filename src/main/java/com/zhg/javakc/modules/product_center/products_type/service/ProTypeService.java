@@ -1,4 +1,4 @@
 package com.zhg.javakc.modules.product_center.products_type.service;
 
-public class TypeService {
+public class ProTypeService {
 }

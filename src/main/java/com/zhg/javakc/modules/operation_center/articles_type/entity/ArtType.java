@@ -1,4 +1,4 @@
 package com.zhg.javakc.modules.operation_center.articles_type.entity;
 
-public class Type {
+public class ArtType {
 }
