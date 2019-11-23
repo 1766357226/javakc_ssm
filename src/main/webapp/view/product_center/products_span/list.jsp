@@ -30,7 +30,9 @@
 		                 <table class="table table-striped table-bordered table-hover table-condensed">
 					        <thead>
 					            <tr>
-					                <th>标签名称</th>
+                                    <th><input type="checkbox" id="checkall"/></th>
+
+                                    <th>标签名称</th>
 					                <th>商品数</th>
 					                <th>描述</th>
                                     <th>操作</th>
@@ -40,6 +42,7 @@
 					        	<c:set var="vs"></c:set>
 					        	<c:forEach var="e" items="${page.list }" varStatus="v">
 						            <tr>
+                                        <td><input type="checkbox" name="ids" value="${e.spanId }"/></td>
 
                                         <td>${e.spanName}</td>
 						                <td>${e.spanNumber}</td>
@@ -53,7 +56,7 @@
                                                 <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>详情
                                             </button>
 
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" id="delete" name="test/delete.do">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" id="delete" name="span/delete.do">
                                                 <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>删除
                                             </button>
                                         </td>
