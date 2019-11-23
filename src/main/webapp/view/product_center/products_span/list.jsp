@@ -22,7 +22,7 @@
 		                 </div>
 	                </div>
 	                <div class="col-sm-4">
-	                	<input class="form-control" id="search" name="testName" value="${testEntity.testName}" type="text" placeholder="查询内容 回车搜索"/>
+	                	<input class="form-control" id="search" name="testName" value="${Span.spanName}" type="text" placeholder="查询内容 回车搜索"/>
 	                </div>
 	                 <!-- ------------按钮组 end------------ -->
 						<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>

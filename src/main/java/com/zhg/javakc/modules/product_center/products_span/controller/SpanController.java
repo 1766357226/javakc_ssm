@@ -18,10 +18,10 @@ public class SpanController {
 
     @Autowired
     private SpanService spanService;
-    @RequestMapping("query")
-    public ModelAndView querySpan(Span testEntity, HttpServletRequest request, HttpServletResponse response){
-        ModelAndView modelAndView=new ModelAndView("span/list");
-        Page<Span> page=spanService.queryTest(testEntity,new Page<Span>(request,response));
+    @RequestMapping("querySpan")
+    public ModelAndView querySpan(Span span, HttpServletRequest request, HttpServletResponse response){
+        ModelAndView modelAndView=new ModelAndView("product_center/products_span/list");
+        Page<Span> page=spanService.queryTest(span,new Page<Span>(request,response));
         modelAndView.addObject("page",page);
         return modelAndView;
 
