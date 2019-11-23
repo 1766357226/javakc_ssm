@@ -2,8 +2,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
 		<title>标签页面</title>
-		<%@ include file="../../../common/jsp/header.jsp"%>
+		<%@ include file="../../common/jsp/header.jsp"%>
+>>>>>>> 9f22c88ba976c5e7ea9064ef8ded42f53bd9a435:src/main/webapp/view/product_center/products_span/list.jsp
 	</head>
 	<body>
 		<div class="wrapper wrapper-content animated fadeInRight">
@@ -30,19 +32,30 @@
 		                 <table class="table table-striped table-bordered table-hover table-condensed">
 					        <thead>
 					            <tr>
-                                    <th><input type="checkbox" id="checkall"/></th>
-
-                                    <th>标签名称</th>
+<<<<<<< HEAD:src/main/webapp/view/articles_type/list.jsp
+					                <th>分组名称</th>
+					                <th>预览图</th>
+					                <th>描述</th>
+									<th>分组状态</th>
+=======
+					                <th>标签名称</th>
 					                <th>商品数</th>
 					                <th>描述</th>
                                     <th>操作</th>
+>>>>>>> 9f22c88ba976c5e7ea9064ef8ded42f53bd9a435:src/main/webapp/view/product_center/products_span/list.jsp
 					            </tr>
 					        </thead>
 					        <tbody>
 					        	<c:set var="vs"></c:set>
 					        	<c:forEach var="e" items="${page.list }" varStatus="v">
 						            <tr>
-                                        <td><input type="checkbox" name="ids" value="${e.spanId }"/></td>
+<<<<<<< HEAD:src/main/webapp/view/articles_type/list.jsp
+						                <td>${e.articleTypeId }</td>
+						                <td>${e.typeName}</td>
+						                <td>${e.typeImage}</td>
+						                <td>${e.typeDescript}</td>
+										<td>${e.typeStatus}</td>
+=======
 
                                         <td>${e.spanName}</td>
 						                <td>${e.spanNumber}</td>
@@ -56,10 +69,11 @@
                                                 <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>详情
                                             </button>
 
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" id="delete" name="span/delete.do">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" id="delete" name="test/delete.do">
                                                 <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>删除
                                             </button>
                                         </td>
+>>>>>>> 9f22c88ba976c5e7ea9064ef8ded42f53bd9a435:src/main/webapp/view/product_center/products_span/list.jsp
 						            </tr>
 					            </c:forEach>
 					        </tbody>

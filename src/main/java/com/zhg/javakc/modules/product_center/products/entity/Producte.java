@@ -63,4 +63,212 @@ public class Producte extends BaseEntity<Producte> {
     private String supId;
     private String spanName;
     private List<String> spanList;
+
+    public String getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
+
+    public String getGoodsNumber() {
+        return goodsNumber;
+    }
+
+    public void setGoodsNumber(String goodsNumber) {
+        this.goodsNumber = goodsNumber;
+    }
+
+    public Integer getViewPrice() {
+        return viewPrice;
+    }
+
+    public void setViewPrice(Integer viewPrice) {
+        this.viewPrice = viewPrice;
+    }
+
+    public Integer getGoodsPrice() {
+        return goodsPrice;
+    }
+
+    public void setGoodsPrice(Integer goodsPrice) {
+        this.goodsPrice = goodsPrice;
+    }
+
+    public Integer getRealPrice() {
+        return realPrice;
+    }
+
+    public void setRealPrice(Integer realPrice) {
+        this.realPrice = realPrice;
+    }
+
+    public String getGoodsDescripte() {
+        return goodsDescripte;
+    }
+
+    public void setGoodsDescripte(String goodsDescripte) {
+        this.goodsDescripte = goodsDescripte;
+    }
+
+    public String getProTime() {
+        return proTime;
+    }
+
+    public void setProTime(String proTime) {
+        this.proTime = proTime;
+    }
+
+    public String getIfHexchange() {
+        return ifHexchange;
+    }
+
+    public void setIfHexchange(String ifHexchange) {
+        this.ifHexchange = ifHexchange;
+    }
+
+    public Integer getGoodsSum() {
+        return goodsSum;
+    }
+
+    public void setGoodsSum(Integer goodsSum) {
+        this.goodsSum = goodsSum;
+    }
+
+    public String getStorageCondition() {
+        return storageCondition;
+    }
+
+    public void setStorageCondition(String storageCondition) {
+        this.storageCondition = storageCondition;
+    }
+
+    public String getGoodsBrand() {
+        return goodsBrand;
+    }
+
+    public void setGoodsBrand(String goodsBrand) {
+        this.goodsBrand = goodsBrand;
+    }
+
+    public String getGoodsSavetime() {
+        return goodsSavetime;
+    }
+
+    public void setGoodsSavetime(String goodsSavetime) {
+        this.goodsSavetime = goodsSavetime;
+    }
+
+    public String getGoodsAddress() {
+        return goodsAddress;
+    }
+
+    public void setGoodsAddress(String goodsAddress) {
+        this.goodsAddress = goodsAddress;
+    }
+
+    public String getGoodsPackage() {
+        return goodsPackage;
+    }
+
+    public void setGoodsPackage(String goodsPackage) {
+        this.goodsPackage = goodsPackage;
+    }
+
+    public Integer getGoodsWater() {
+        return goodsWater;
+    }
+
+    public void setGoodsWater(Integer goodsWater) {
+        this.goodsWater = goodsWater;
+    }
+
+    public String getGoodsUnit() {
+        return goodsUnit;
+    }
+
+    public void setGoodsUnit(String goodsUnit) {
+        this.goodsUnit = goodsUnit;
+    }
+
+    public String getGoodsWeight() {
+        return goodsWeight;
+    }
+
+    public void setGoodsWeight(String goodsWeight) {
+        this.goodsWeight = goodsWeight;
+    }
+
+    public String getGoodsSales() {
+        return goodsSales;
+    }
+
+    public void setGoodsSales(String goodsSales) {
+        this.goodsSales = goodsSales;
+    }
+
+    public Integer getGoodsStatus() {
+        return goodsStatus;
+    }
+
+    public void setGoodsStatus(Integer goodsStatus) {
+        this.goodsStatus = goodsStatus;
+    }
+
+    public String getGoodsSearch() {
+        return goodsSearch;
+    }
+
+    public void setGoodsSearch(String goodsSearch) {
+        this.goodsSearch = goodsSearch;
+    }
+
+    public String getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(String articleId) {
+        this.articleId = articleId;
+    }
+
+    public String getSupId() {
+        return supId;
+    }
+
+    public void setSupId(String supId) {
+        this.supId = supId;
+    }
+
+    public String getSpanName() {
+        return spanName;
+    }
+
+    public void setSpanName(String spanName) {
+        this.spanName = spanName;
+    }
+
+    public List<String> getSpanList() {
+        return spanList;
+    }
+
+    public void setSpanList(List<String> spanList) {
+        this.spanList = spanList;
+    }
 }

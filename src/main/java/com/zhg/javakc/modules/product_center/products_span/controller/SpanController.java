@@ -26,4 +26,10 @@ public class SpanController {
         return modelAndView;
 
     }
+
+    @RequestMapping("delete")
+    public String delete(String[] ids){
+        spanService.delete(ids);
+        return "redirect:querySpan.do";
+    }
 }
