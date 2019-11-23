@@ -6,6 +6,8 @@ public class Span extends BaseEntity<Span> {
 
     private String spanId;
 
+    private String spanName;
+
     private Integer spanNumber;
 
     private String spanDescript;
@@ -16,6 +18,14 @@ public class Span extends BaseEntity<Span> {
 
     public void setSpanId(String spanId) {
         this.spanId = spanId;
+    }
+
+    public String getSpanName() {
+        return spanName;
+    }
+
+    public void setSpanName(String spanName) {
+        this.spanName = spanName;
     }
 
     public Integer getSpanNumber() {
