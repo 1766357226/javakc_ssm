@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhg.javakc.modules.product_center.products.dao.ProDao">
+	
+	<resultMap id="dictionary" type="dictionary">  
+        <id property="dataId" column="DATA_ID" />
+        <result property="dataName" column="DATA_NAME" />
+        <result property="dataType" column="DATA_TYPE" />
+        <result property="dataCode" column="DATA_CODE" />
+        <result property="dataVal" column="DATA_VAL" />
+        <result property="dataCommon" column="DATA_COMMON" />
+    </resultMap>
+	
+
+	
+</mapper>
