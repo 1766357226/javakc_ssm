@@ -19,16 +19,15 @@
 		                            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>添加
 		                        </button>
 	                        </shiro:hasPermission>
-	                        <shiro:hasPermission name="user:update">
-		                        <button type="button" class="btn btn-success" data-toggle="modal" id="update" name="user/view.do">
-		                            <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>修改
-		                        </button>
-	                        </shiro:hasPermission>
-	                        <shiro:hasPermission name="user:delete">
-		                        <button type="button" class="btn btn-danger" data-toggle="modal" id="delete" name="user/delete.do">
-		                            <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>删除
-		                        </button>
-	                        </shiro:hasPermission>
+
+                            <div class="btn-group hidden-xs" role="group">
+                                <button type="button" class="btn btn-success" data-toggle="modal" id="update" name="test/view.do">
+                                    <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>修改
+                                </button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" id="delete" name="test/delete.do">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>删除
+                                </button>
+                            </div>
 		                 </div>
 	                </div>
 	                <div class="col-sm-4">
@@ -60,6 +59,9 @@
 						                <td>${sup.supAddress }</td>
 						                <td>${sup.infoContacts }</td>
 						                <td>${sup.infoPhone}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link" id="create" name="user/add.do">详情</button>
+                                        </td>
 						            </tr>
 					            </c:forEach>
 					        </tbody>
