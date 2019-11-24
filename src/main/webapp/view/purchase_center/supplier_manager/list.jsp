@@ -49,7 +49,7 @@
 						                <td>${sup.infoContacts }</td>
 						                <td>${sup.infoPhone}</td>
                                         <td>
-                                            <button type="button" class="btn btn-link" id="update" name="user/add.do">编辑</button>
+                                            <button type="button" class="btn btn-link" onclick="fun('sup/view')">编辑</button>
                                             <button type="button" class="btn btn-link" id="find" name="user/add.do">详情</button>
                                         </td>
 						            </tr>
@@ -62,4 +62,5 @@
 			</div>
 		</div>
 	</body>
+    <script type="text/javascript" src="${path }/view/purchase_center/supplier_manager/js/supplier_manager.js"></script>
 </html>

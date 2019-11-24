@@ -7,5 +7,11 @@
     <insert id="insert">
         insert into cs_supplier(sup_id,sup_name,sup_descripte,sup_address,info_contacts,info_phone,info_contacts2,info_phone2,info_rcjin) values (#{supId},#{supName},#{supDescripte},#{supAddress},#{infoContacts},#{infoPhone},#{infoContacts2},#{infoPhone2},#{infoRcjin})
     </insert>
+    <select id="get" resultType="com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupplierEntity">
+         select sup_id AS supId,sup_name AS supName, sup_descripte AS  supDescripte,sup_address AS supAddress,info_contacts AS infoContacts,info_phone AS infoPhone，info_contacts2 AS infoContacts2,info_phone2 AS infoPhone2，info_rcjin AS infoRcjin from cs_supplier where sup_id=#{supId}
+    </select>
+    <update id="update">
+         update cs_supplier set sup_name=#{supName},sup_descripte=#{supDescripte},sup_address=#{supAddress},info_contacts=#{infoContacts},info_phone=#{infoPhone},info_contacts2=#{infoContacts2},info_phone2=#{infoPhone2},info_rcjin=#{infoRcjin} where sup_id=#{supId}
+    </update>
 
 </mapper>
