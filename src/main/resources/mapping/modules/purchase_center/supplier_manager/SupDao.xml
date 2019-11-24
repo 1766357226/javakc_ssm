@@ -4,5 +4,8 @@
     <select id="findList" resultType="com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupplierEntity">
         select sup_id AS supId,sup_name AS supName, sup_descripte AS  supDescripte,sup_address AS supAddress,info_contacts AS infoContacts,info_phone AS infoPhone from cs_supplier
     </select>
+    <insert id="insert">
+        insert into cs_supplier(sup_id,sup_name,sup_descripte,sup_address,info_contacts,info_phone,info_contacts2,info_phone2,info_rcjin) values (#{supId},#{supName},#{supDescripte},#{supAddress},#{infoContacts},#{infoPhone},#{infoContacts2},#{infoPhone2},#{infoRcjin})
+    </insert>
 
 </mapper>

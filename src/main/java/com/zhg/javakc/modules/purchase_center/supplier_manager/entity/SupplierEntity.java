@@ -18,11 +18,11 @@ public class SupplierEntity extends BaseEntity<SupplierEntity> {
     // ## 备用联系人
     private String infoContacts2;
     // ## 备用联系人的联系方式
-    private String info_phone2;
+    private String infoPhone2;
     // ## 地区
     private String infoRcjin;
-    // ## 备注
-    private String infoRemarkes;
+//    // ## 备注
+//    private String infoRemarkes;
 
 
     public String getSupId() {
@@ -81,12 +81,12 @@ public class SupplierEntity extends BaseEntity<SupplierEntity> {
         this.infoContacts2 = infoContacts2;
     }
 
-    public String getInfo_phone2() {
-        return info_phone2;
+    public String getInfoPhone2() {
+        return infoPhone2;
     }
 
-    public void setInfo_phone2(String info_phone2) {
-        this.info_phone2 = info_phone2;
+    public void setInfoPhone2(String info_phone2) {
+        this.infoPhone2 = infoPhone2;
     }
 
     public String getInfoRcjin() {
@@ -97,11 +97,11 @@ public class SupplierEntity extends BaseEntity<SupplierEntity> {
         this.infoRcjin = infoRcjin;
     }
 
-    public String getInfoRemarkes() {
-        return infoRemarkes;
-    }
-
-    public void setInfoRemarkes(String infoRemarkes) {
-        this.infoRemarkes = infoRemarkes;
-    }
+//    public String getInfoRemarkes() {
+//        return infoRemarkes;
+//    }
+//
+//    public void setInfoRemarkes(String infoRemarkes) {
+//        this.infoRemarkes = infoRemarkes;
+//    }
 }

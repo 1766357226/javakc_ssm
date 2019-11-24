@@ -13,7 +13,7 @@
            supId as c.SUP_ID
        </sql>
 
-        <select id="findList" resultType="com.zhg.javakc.modules.product_center.products.entity">
+        <select id="findList" resultType="com.zhg.javakc.modules.product_center.products.entity.Producte">
            SELECT <include refid="allColumn"></include>,s.spanName as span_id from
            cs_goods c,
            cs_article a,
