@@ -7,6 +7,7 @@ import com.zhg.javakc.modules.purchase_center.supplier_manager.service.SupServic
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,15 @@ public class SupController {
         entity.setSupId(CommonUtil.uuid());
         supService.save(entity);
         return  "redirect:/sup/query.do";
-
+    }
+    @RequestMapping("/view/{id}")
+    public String view(@PathVariable String id, ModelMap map){
+        map.put("entity",supService.get(id));
+        return "purchase_center/supplier_manager/update";
+    }
+    @RequestMapping("/update")
+    public String update(SupplierEntity entity){
+        supService.update(entity);
+        return  "redirect:/sup/query.do";
     }
 }
