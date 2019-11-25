@@ -85,4 +85,5 @@
 			</div>
 		</div>
 	</body>
+	<script type="text/javascript" src="${path }view/product_center/products/js/product.js"></script>
 </html>
