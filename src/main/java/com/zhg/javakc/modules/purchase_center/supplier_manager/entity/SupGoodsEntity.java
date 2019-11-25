@@ -1,6 +1,8 @@
 package com.zhg.javakc.modules.purchase_center.supplier_manager.entity;
 
-public class SupGoodsEntity {
+import com.zhg.javakc.base.entity.BaseEntity;
+
+public class SupGoodsEntity extends BaseEntity<SupGoodsEntity> {
     // ## 主键
     private String supGoodsId;
     // ## 商品名称
@@ -15,6 +17,7 @@ public class SupGoodsEntity {
     private Integer supGoodsSellPrice;
     // ## 状态
     private Integer supGoodsStatus;
+
 
     public String getSupGoodsId() {
         return supGoodsId;

@@ -51,7 +51,6 @@
 							<div class="col-sm-4">
 								${entity.supAddress}
 							</div>
-
 						</div>
 						<div  class="form-group">
 							<label class="col-sm-1 control-label">描述</label>
@@ -60,16 +59,32 @@
 							</div>
 						</div>
                     </fieldset>
-					<fieldset style="border: 1px solid #777777;">
-						<table class="table">
+					<fieldset>
+						<legend>商品清单</legend>
+						<table class="table table-bordered">
 							<thead>
-							<tr>...</tr>
-							<tr>...</tr>
-							<tr>...</tr>
-							<tr>...</tr>
-							<tr>...</tr>
+							<tr style="background-color: #828282">
+							<th>商品名称</th>
+							<th>商品编号</th>
+							<th>销量</th>
+							<th>供货价</th>
+							<th>销售价</th>
+							<th>状态</th>
+							</tr>
 							</thead>
-
+							<tbody>
+							<c:forEach var="g" items="${page}" varStatus="v">
+								<tr>
+									<td><input type="checkbox" name="ids" value="${g.supGoodsId}"/></td>
+									<td>${g.supGoodsName }</td>
+									<td>${g.supGoodsNumber}</td>
+									<td>${g.supGoodsSum}</td>
+									<td>${g.supGoodsPrice }</td>
+									<td>${g.supGoodsSellPrice}</td>
+									<td>${g.supGoodsStatus}</td>
+								</tr>
+							</c:forEach>
+							</tbody>
 						</table>
 					</fieldset>
                     <fieldset>

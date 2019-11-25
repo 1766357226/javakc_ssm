@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhg.javakc.modules.purchase_center.supplier_manager.dao.SupGoodsDao">
+
+
+
+    <select id="findByGoods" resultType="com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupGoodsEntity">
+        SELECT SGL.sup_Goods_Id AS supGoodsId,SGL.sup_Goods_Name AS supGoodsName,SGL.sup_Goods_Number AS supGoodsNumber,SGL.sup_Goods_Sum AS supGoodsSum,SGL.sup_Goods_Price AS supGoodsPrice,SGL.sup_Goods_Sell_Price AS supGoodsSellPrice,SGL.sup_Goods_Status AS supGoodsStatus  FROM CS_GOODLIST_SUP CGS,SUP_GOODS_LIST SGL
+        WHERE SGL.sup_Goods_Id=CGS.sup_Goods_Id AND CGS.sup_id = #{id}
+    </select>
+
+</mapper>
