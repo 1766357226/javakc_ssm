@@ -80,7 +80,10 @@
 									<td>${g.supGoodsSum}</td>
 									<td>${g.supGoodsPrice }</td>
 									<td>${g.supGoodsSellPrice}</td>
-									<td>${g.supGoodsStatus}</td>
+									<td>
+										<zhg:show value="${g.supGoodsStatus}" codeTp="supGoodsStatus"></zhg:show>
+<%--										${g.supGoodsStatus}--%>
+									</td>
 								</tr>
 							</c:forEach>
 							</tbody>
