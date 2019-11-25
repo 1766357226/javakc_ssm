@@ -75,7 +75,6 @@
 							<tbody>
 							<c:forEach var="g" items="${page}" varStatus="v">
 								<tr>
-									<td><input type="checkbox" name="ids" value="${g.supGoodsId}"/></td>
 									<td>${g.supGoodsName }</td>
 									<td>${g.supGoodsNumber}</td>
 									<td>${g.supGoodsSum}</td>
