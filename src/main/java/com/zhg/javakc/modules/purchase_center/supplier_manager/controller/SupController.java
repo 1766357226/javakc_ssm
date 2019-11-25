@@ -45,4 +45,12 @@ public class SupController {
         supService.update(entity);
         return  "redirect:/sup/query.do";
     }
+    @RequestMapping("/look/{id}")
+    public String look(@PathVariable String id, ModelMap map){
+        SupplierEntity entity=supService.get(id);
+        entity.setSupGoodsList(supService.findBySup(id));
+        map.put("entity",supService.get(id));
+        return "purchase_center/supplier_manager/look";
+    }
 }
+
