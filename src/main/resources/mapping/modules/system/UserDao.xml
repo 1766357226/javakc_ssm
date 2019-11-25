@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhg.javakc.modules.system.user.dao.UserDao">
-
+	
 	<resultMap id="user" type="user">
-	<id property="userId" column="USER_ID" />
-	<result property="userName" column="USER_NAME" />
-	<result property="loginName" column="LOGIN_NAME" />
-	<result property="loginPass" column="LOGIN_PASS" />
-	<result property="userEmail" column="USER_EMAIL" />
-	<result property="userPhone" column="USER_PHONE" />
-	<result property="userSex" column="USER_SEX" />
-	</resultMap>
-    
-	<resultMap id="userRole" type="user">  
+        <id property="userId" column="USER_ID" />
+        <result property="userName" column="USER_NAME" />
+        <result property="loginName" column="LOGIN_NAME" />
+        <result property="loginPass" column="LOGIN_PASS" />
+        <result property="userEmail" column="USER_EMAIL" />
+        <result property="userPhone" column="USER_PHONE" />
+        <result property="userSex" column="USER_SEX" />
+    </resultMap>
+
+	<resultMap id="userRole" type="user">
         <id property="userId" column="USER_ID" />
         <result property="userName" column="USER_NAME" />
         <result property="loginName" column="LOGIN_NAME" />
