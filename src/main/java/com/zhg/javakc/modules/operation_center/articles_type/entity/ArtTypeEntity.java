@@ -5,6 +5,7 @@ package com.zhg.javakc.modules.operation_center.articles_type.entity;
  */
 import com.zhg.javakc.base.entity.BaseEntity;
 
+import javax.persistence.Lob;
 import java.sql.Blob;
 
 public class ArtTypeEntity extends BaseEntity<ArtTypeEntity> {
@@ -22,7 +23,8 @@ public class ArtTypeEntity extends BaseEntity<ArtTypeEntity> {
      *Author:liujun
      *预览图
      */
-    private Blob typeImage;
+    @Lob
+    private byte[] typeImage;
     /**
      *Author:liujun
      *描述
@@ -50,11 +52,11 @@ public class ArtTypeEntity extends BaseEntity<ArtTypeEntity> {
         this.typeName = typeName;
     }
 
-    public Blob getTypeImage() {
+    public byte[] getTypeImage() {
         return typeImage;
     }
 
-    public void setTypeImage(Blob typeImage) {
+    public void setTypeImage(byte[] typeImage) {
         this.typeImage = typeImage;
     }
 

@@ -14,19 +14,13 @@
 				<div class="alert alert-success" role="alert">文章分组详细信息</div>
 				<div class="col-sm-8">
 					<div class="btn-group hidden-xs" role="group">
-						<button type="button" class="btn btn-primary" data-toggle="modal" id="create" name="test/create.jsp">
+						<button type="button" class="btn btn-primary" data-toggle="modal" id="create" name="articles_type/create.jsp">
 							<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>添加
 						</button>
-						<button type="button" class="btn btn-success" data-toggle="modal" id="update" name="test/view.do">
+						<button type="button" class="btn btn-success" data-toggle="modal" id="update" name="articles_type/view.do">
 							<i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>修改
 						</button>
-						<button type="button" class="btn btn-danger" data-toggle="modal" id="delete" name="test/delete.do">
-							<i class="glyphicon glyphicon-trash" aria-hidden="true"></i>删除
-						</button>
 					</div>
-				</div>
-				<div class="col-sm-4">
-					<input class="form-control" id="search" name="testName" value="${testEntity.testName}" type="text" placeholder="查询内容 回车搜索"/>
 				</div>
 				<!-- ------------按钮组 end------------ -->
 				<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
@@ -47,7 +41,9 @@
 						<tr>
 							<td><input type="checkbox" name="ids" value="${e.articleTypeId}"/></td>
 							<td>${e.typeName }</td>
-							<td>${e.typeImage }</td>
+							<td><img src="<%=path%>/static/img/${e.typeImage}.png"
+									 style="height: 50px; width: 50px;"
+									 onerror="javascript:this.src='<%=path%>/static/img/a1.jpg'"/></td>
 							<td>${e.typeDescripe }</td>
 							<td>${e.typeStatus }</td>
 						</tr>

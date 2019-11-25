@@ -26,6 +26,22 @@ public class TypeController {
         Page<ArtTypeEntity> page = typeService.queryArt(artTypeEntity, new Page<ArtTypeEntity>(request, response));
         modelAndView.addObject("page", page);
         return modelAndView;
-
+    }
+    @RequestMapping("/save")
+    public String save(ArtTypeEntity artTypeEntity){
+        artTypeEntity.setArticleTypeId(CommonUtil.uuid());
+        typeService.save(artTypeEntity);
+        return "redirect:queryArt.do";
+    }
+    @RequestMapping("/view")
+    public String view(String ids,ModelMap modelMap){
+        ArtTypeEntity artTypeEntity=typeService.get(ids);
+        modelMap.put("artTypeEntity",artTypeEntity);
+        return "articles_type/update";
+    }
+    @RequestMapping("/update")
+    public String update(ArtTypeEntity artTypeEntity){
+        typeService.update(artTypeEntity);
+        return "redirect:queryArt.do";
     }
 }
