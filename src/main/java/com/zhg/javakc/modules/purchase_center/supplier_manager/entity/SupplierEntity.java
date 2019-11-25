@@ -2,6 +2,8 @@ package com.zhg.javakc.modules.purchase_center.supplier_manager.entity;
 
 import com.zhg.javakc.base.entity.BaseEntity;
 
+import java.util.List;
+
 public class SupplierEntity extends BaseEntity<SupplierEntity> {
     // ## 主键
     private String supId;
@@ -23,7 +25,15 @@ public class SupplierEntity extends BaseEntity<SupplierEntity> {
     private String infoRcjin;
 //    // ## 备注
 //    private String infoRemarkes;
+    private List<SupGoodsEntity> SupGoodsList;
 
+    public List<SupGoodsEntity> getSupGoodsList() {
+        return SupGoodsList;
+    }
+
+    public void setSupGoodsList(List<SupGoodsEntity> supGoodsList) {
+        SupGoodsList = supGoodsList;
+    }
 
     public String getSupId() {
         return supId;

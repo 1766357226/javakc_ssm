@@ -49,8 +49,8 @@
 						                <td>${sup.infoContacts }</td>
 						                <td>${sup.infoPhone}</td>
                                         <td>
-                                            <button type="button" class="btn btn-link" onclick="fun('sup/view')">编辑</button>
-                                            <button type="button" class="btn btn-link" id="find" name="user/add.do">详情</button>
+                                            <button type="button" class="btn btn-link" onclick="update('sup/view')">编辑</button>
+                                            <button type="button" class="btn btn-link" onclick="look('sup/look')">详情</button>
                                         </td>
 						            </tr>
 					            </c:forEach>
