@@ -12,65 +12,65 @@ public class ArtTypeEntity extends BaseEntity<ArtTypeEntity> {
      *Author:liujun
      *主键
      */
-    private String article_type_id;
+    private String articleTypeId;
     /**
      *Author:liujun
      *分组名称
      */
-    private String type_name;
+    private String typeName;
     /**
      *Author:liujun
      *预览图
      */
-    private Blob type_image;
+    private Blob typeImage;
     /**
      *Author:liujun
      *描述
      */
-    private String type_descripe;
+    private String typeDescripe;
     /**
      *Author:liujun
      *分组状态
      */
-    private Integer type_status;
+    private Integer typeStatus;
 
-    public String getArticle_type_id() {
-        return article_type_id;
+    public String getArticleTypeId() {
+        return articleTypeId;
     }
 
-    public void setArticle_type_id(String article_type_id) {
-        this.article_type_id = article_type_id;
+    public void setArticleTypeId(String articleTypeId) {
+        this.articleTypeId = articleTypeId;
     }
 
-    public String getType_name() {
-        return type_name;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setType_name(String type_name) {
-        this.type_name = type_name;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
-    public Blob getType_image() {
-        return type_image;
+    public Blob getTypeImage() {
+        return typeImage;
     }
 
-    public void setType_image(Blob type_image) {
-        this.type_image = type_image;
+    public void setTypeImage(Blob typeImage) {
+        this.typeImage = typeImage;
     }
 
-    public String getType_descripe() {
-        return type_descripe;
+    public String getTypeDescripe() {
+        return typeDescripe;
     }
 
-    public void setType_descripe(String type_descripe) {
-        this.type_descripe = type_descripe;
+    public void setTypeDescripe(String typeDescripe) {
+        this.typeDescripe = typeDescripe;
     }
 
-    public Integer getType_status() {
-        return type_status;
+    public Integer getTypeStatus() {
+        return typeStatus;
     }
 
-    public void setType_status(Integer type_status) {
-        this.type_status = type_status;
+    public void setTypeStatus(Integer typeStatus) {
+        this.typeStatus = typeStatus;
     }
 }
