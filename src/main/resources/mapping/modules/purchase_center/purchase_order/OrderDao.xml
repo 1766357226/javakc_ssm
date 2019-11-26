@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhg.javakc.modules.purchase_center.purchase_order.dao.OrderDao">
+        <resultMap id="pur" type="com.zhg.javakc.modules.purchase_center.purchase_order.entity.OrderEntity">
+            <id property="purId" column="pur_id" />
+            <result property="purNumber" column="pur_Number" />
+            <result property="checkStatus" column="check_status" />
+            <result property="purType" column="pur_type" />
+            <result property="purPeople" column="pur_people" />
+            <result property="supPhone" column="info_phone" />
+            <result property="purRemark" column="pur_remark" />
+            <result property="purCreator" column="pur_creator" />
+            <result property="purCreateDate" column="pur_create_date" />
+            <result property="purAuditor" column="pur_auditor"/>
+            <result property="purCheckDate" column="pur_check_date"/>
+            <result property="supId" column="sup_id"/>
+            <result property="purMoney" column="PUR_MONEY"/>
+            <result property="supName" column="Sup_Name"/>
+        </resultMap>
+    <select id="findList" resultMap="pur">
+        select cp.pur_id,cp.pur_number,cp.check_status,cp.pur_type,cp.pur_create_date,cp.pur_money,cs.sup_name
+        from cs_pur cp,cs_supplier cs where cp.sup_id=cs.sup_id
+        <if test="purType!= null and purType!='' ">
+            AND cp.pur_type=#{purType}
+        </if>
+    </select>
+
+
+</mapper>
