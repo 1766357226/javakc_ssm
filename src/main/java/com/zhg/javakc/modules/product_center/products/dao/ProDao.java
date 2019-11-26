@@ -9,4 +9,6 @@ public interface ProDao extends BaseDao<Producte> {
     public void insertRelation(Map<String, Object> data);
 
     public void deleteRelation(String goodsId);
+
+
 }

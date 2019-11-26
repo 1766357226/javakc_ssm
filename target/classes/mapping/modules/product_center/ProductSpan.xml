@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhg.javakc.modules.product_center.products_span.dao.SpanDao">
+
+	<select id="findList" resultType="com.zhg.javakc.modules.product_center.products_span.entity.Span">
+      select span_id as spanId,span_number as spanNumber,span_descript as spanDescript,span_name as spanName
+      from cs_good_span where 1=1
+
+    </select>
+
+    <delete id="delete">
+        DELETE FROM CS_GOOD_SPAN WHERE SPAN_ID IN
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+	
+</mapper>

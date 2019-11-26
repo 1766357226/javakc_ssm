@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhg.javakc.modules.purchase_center.supplier_manager.dao.SupDao">
+    <select id="findList" resultType="com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupplierEntity">
+        select sup_id AS supId,sup_name AS supName, sup_descripte AS  supDescripte,sup_address AS supAddress,info_contacts AS infoContacts,info_phone AS infoPhone from cs_supplier
+    </select>
+    <insert id="insert">
+        insert into cs_supplier(sup_id,sup_name,sup_descripte,sup_address,info_contacts,info_phone,info_contacts2,info_phone2,info_rcjin) values (#{supId},#{supName},#{supDescripte},#{supAddress},#{infoContacts},#{infoPhone},#{infoContacts2},#{infoPhone2},#{infoRcjin})
+    </insert>
+    <select id="get" resultType="com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupplierEntity">
+         select sup_id AS supId,sup_name AS supName, sup_descripte AS  supDescripte,sup_address AS supAddress,info_contacts AS infoContacts,info_phone AS infoPhone，info_contacts2 AS infoContacts2,info_phone2 AS infoPhone2，info_rcjin AS infoRcjin from cs_supplier where sup_id=#{supId}
+    </select>
+    <update id="update">
+         update cs_supplier set sup_name=#{supName},sup_descripte=#{supDescripte},sup_address=#{supAddress},info_contacts=#{infoContacts},info_phone=#{infoPhone},info_contacts2=#{infoContacts2},info_phone2=#{infoPhone2},info_rcjin=#{infoRcjin} where sup_id=#{supId}
+    </update>
+
+<!--    <resultMap id="sup" type="com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupplierEntity">-->
+<!--        <id property="supId" column="sup_id" />-->
+<!--        <result property="supName" column="sup_name" />-->
+<!--        <result property="supDescripte" column="sup_descripte" />-->
+<!--        <result property="supAddress" column="sup_address" />-->
+<!--        <result property="infoContacts" column="info_contacts" />-->
+<!--        <result property="infoPhone" column="info_phone" />-->
+<!--        <result property="infoContacts2" column="info_contacts2" />-->
+<!--        <result property="infoPhone2" column="info_phone2" />-->
+<!--        <result property="infoRcjin" column="info_rcjin" />-->
+<!--    </resultMap>-->
+<!--    <resultMap id="supGoods" type="com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupplierEntity">-->
+<!--        <id property="supId" column="sup_id" />-->
+<!--        <result property="supName" column="sup_name" />-->
+<!--        <result property="supDescripte" column="sup_descripte" />-->
+<!--        <result property="supAddress" column="sup_address" />-->
+<!--        <result property="infoContacts" column="info_contacts" />-->
+<!--        <result property="infoPhone" column="info_phone" />-->
+<!--        <result property="infoContacts2" column="info_contacts2" />-->
+<!--        <result property="infoPhone2" column="info_phone2" />-->
+<!--        <result property="infoRcjin" column="info_rcjin" />-->
+<!--        <collection property="SupGoodsList" column="sup_Goods_Id" javaType="ArrayList" ofType="com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupGoodsEntity">-->
+<!--            <result column="sup_Goods_Id" />-->
+<!--        </collection>-->
+<!--    </resultMap>-->
+<!--    <select id="findBySup" resultMap="supGoods">-->
+<!--        SELECT SGL.sup_Goods_Id AS supGoodsId,SGL.sup_Goods_Name,SGL.sup_Goods_Number,SGL.sup_Goods_Sum,SGL.sup_Goods_Price,SGL.sup_Goods_Sell_Price,SGL.sup_Goods_Status  FROM CS_GOODLIST_SUP CGS,SUP_GOODS_LIST SGL-->
+<!--        WHERE SGL.sup_Goods_Id=CGS.sup_Goods_Id AND CGS.sup_id = #{id}-->
+<!--    </select>-->
+
+</mapper>

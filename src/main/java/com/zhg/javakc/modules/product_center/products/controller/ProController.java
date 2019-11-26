@@ -5,15 +5,17 @@ import com.zhg.javakc.base.util.CommonUtil;
 import com.zhg.javakc.modules.product_center.products.entity.Producte;
 import com.zhg.javakc.modules.product_center.products.service.ProService;
 import com.zhg.javakc.modules.product_center.products_span.service.SpanService;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.zhg.javakc.modules.purchase_center.supplier_manager.service.SupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 @Controller
 @RequestMapping("/product")
@@ -22,11 +24,14 @@ public class ProController {
     private ProService proService;
     @Autowired
     private SpanService spanService;
-    @RequiresPermissions("goods:query")
+    @Autowired
+    private SupService supService;
+
+
     @RequestMapping("/query")
     public ModelAndView query(Producte entity, HttpServletRequest request, HttpServletResponse response){
-        ModelAndView modelAndView=new ModelAndView("test/list");
-        Page<Producte> page=proService.queryTest(entity,new Page<Producte>(request,response));
+        ModelAndView modelAndView=new ModelAndView("product_center/products/list");
+        Page<Producte> page=proService.query(entity,new Page<Producte>(request,response));
         modelAndView.addObject("page",page);
         return modelAndView;
     }
@@ -41,32 +46,41 @@ public class ProController {
     public String add(ModelMap model)
     {
         model.put("spanList", spanService.findList(null));
+        model.put("supList",supService.findList(null));
         return "product_center/products/create";
     }
-    @RequiresPermissions("goods:save")
+
     @RequestMapping("/save")
     public String save(Producte entity){
         entity.setGoodsId(CommonUtil.uuid());
         proService.save(entity);
-        return "redirect:query.do";
+        return "redirect:product/query.do";
     }
-    @RequestMapping("/get")
-    public String view(String ids, ModelMap modelMap){
-        Producte entity= proService.get(ids);
+    @RequestMapping("/get/{id}")
+    public String view( @PathVariable String id, ModelMap modelMap){
+        Producte entity= proService.get(id);
         modelMap.put("entity",entity);
         modelMap.put("spanList", spanService.findList(null));
       return "/product_center/products/update";
     }
-    @RequiresPermissions("goods:update")
+
     @RequestMapping("/update")
     public String update(Producte entity){
         proService.update(entity);
-        return"redirect:query.do";
+        return"redirect:product/query.do";
     }
-    @RequiresPermissions("goods:delete")
+
     @RequestMapping("/delete")
     public String delete(String[] ids){
         proService.delete(ids);
         return "redirect:query.do";
+    }
+
+    @RequestMapping("/look/{id}")
+    public String look(@PathVariable  String id, ModelMap modelMap){
+        Producte entity= proService.get(id);
+        modelMap.put("entity",entity);
+        modelMap.put("spanList", spanService.findList(null));
+        return "/product_center/products/look";
     }
 }

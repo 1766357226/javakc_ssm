@@ -20,13 +20,13 @@ public class ProService extends BaseService<ProDao, Producte> {
     @Autowired
     private ProDao proDao;
 
-    public Page<Producte> queryTest(Producte testEntity, Page<Producte> page){
+    public Page<Producte> query(Producte entity, Page<Producte> page){
         //设置分页参数，才会被Mybatis分页插件所识别，在其sql的前后加入分页sql语句
-        testEntity.setPage(page);
+        entity.setPage(page);
         //根据分页与查询条件进行测试数据的查询
-        List<Producte> testList=proDao.findList(testEntity);
+        List<Producte> list=proDao.findList(entity);
         //将查询数据设置到分页类的List集合当中，一起返回
-        page.setList(testList);
+        page.setList(list);
         return page;
     }
     @Transactional(readOnly = false)
@@ -54,7 +54,6 @@ public class ProService extends BaseService<ProDao, Producte> {
     public void update(Producte entity, String[] spanIds)
     {
         proDao.update(entity);
-
         proDao.deleteRelation(entity.getGoodsId());
 
         for(String spanId:spanIds)

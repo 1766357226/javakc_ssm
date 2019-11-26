@@ -4,9 +4,14 @@ package com.zhg.javakc.modules.operation_center.articles_type.entity;
  *文章分组
  */
 import com.zhg.javakc.base.entity.BaseEntity;
+import com.zhg.javakc.modules.operation_center.articles.entity.ArticlesEntity;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import java.sql.Blob;
+import java.util.List;
 
 public class ArtTypeEntity extends BaseEntity<ArtTypeEntity> {
     /**
@@ -35,6 +40,17 @@ public class ArtTypeEntity extends BaseEntity<ArtTypeEntity> {
      *分组状态
      */
     private Integer typeStatus;
+    // @ManyToMany
+    // @JoinTable(
+    //     name="article_cen",
+    //         joinColumns = {
+    //             @JoinColumn(name="articleTypeId")
+    //         },
+    //         inverseJoinColumns = {
+    //             @JoinColumn(name ="articleId" )
+    //         }
+    // )
+    // private List<ArticlesEntity> articleType;
 
     public String getArticleTypeId() {
         return articleTypeId;

@@ -11,7 +11,7 @@
 				<div class="col-sm-4"><input type="button" value="返回上一页" class="btn btn-success" onclick="javascript:history.back();"/></div>
 			</div>
 			<div class="ibox float-e-margins">
-				<form action="${path }/sup/update.do" method="post" enctype="multipart/form-data"
+				<form action="${path }/sup/query.do" method="post" enctype="multipart/form-data"
 					class="form-horizontal" role="form">
 					<input type="hidden" name="supId" value="${entity.supId }" />
                     <fieldset style="border: 1px solid #777777;">
@@ -80,7 +80,10 @@
 									<td>${g.supGoodsSum}</td>
 									<td>${g.supGoodsPrice }</td>
 									<td>${g.supGoodsSellPrice}</td>
-									<td>${g.supGoodsStatus}</td>
+									<td>
+										<zhg:show value="${g.supGoodsStatus}" codeTp="supGoodsStatus"></zhg:show>
+<%--										${g.supGoodsStatus}--%>
+									</td>
 								</tr>
 							</c:forEach>
 							</tbody>
@@ -88,13 +91,9 @@
 					</fieldset>
                     <fieldset>
                         <div class="form-group">
-                        	<label class="col-sm-2 control-label"></label>
+                        	<label class="col-sm-5 control-label"></label>
                            <div class="col-sm-4">
-                              <input type="submit" value="提交" class="btn btn-primary"/>
-                           </div>
-                           <label class="col-sm-2 control-label"></label>
-                           <div class="col-sm-4">
-                              <input type="reset" value="重置" class="btn btn-danger"/>
+                              <input type="submit" value="返回" class="btn btn-primary"/>
                            </div>
                         </div>
                     </fieldset>
