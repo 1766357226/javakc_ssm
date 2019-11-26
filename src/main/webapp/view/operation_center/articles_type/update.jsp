@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>文章分组修改页面</title>
-	<%@ include file="../../common/jsp/header.jsp"%>
+	<%@ include file="../../../common/jsp/header.jsp"%>
 	<link href="${path }/static/css/plugins/file-input/fileinput.min.css" rel="stylesheet">
 </head>
 <body>
@@ -21,6 +21,8 @@
 					<div class="col-sm-4">
 						<input class="form-control" type="text" name="typeName" value="${artTypeEntity.typeName}"/>
 					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-sm-2 control-label" for="ds_host">描述</label>
 					<div class="col-sm-4">
 						<textarea class="form-control"  cols="50" rows="5"  name="typeDescripe" >${artTypeEntity.typeDescripe}</textarea>
@@ -43,6 +45,6 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="${path }/static/js/plugins/file-input/fileinput.min.js"></script>
+<script type="text/javascript" src="${path}/static/js/plugins/file-input/fileinput.min.js"></script>
 <script type="text/javascript" src="./js/dictionary.js"></script>
 </html>

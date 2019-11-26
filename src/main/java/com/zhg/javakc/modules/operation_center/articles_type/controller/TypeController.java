@@ -22,7 +22,7 @@ public class TypeController {
     private TypeService typeService;
     @RequestMapping("queryArt")
     public ModelAndView queryArt(ArtTypeEntity artTypeEntity, HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView modelAndView = new ModelAndView("articles_type/list");
+        ModelAndView modelAndView = new ModelAndView("operation_center/articles_type/list");
         Page<ArtTypeEntity> page = typeService.queryArt(artTypeEntity, new Page<ArtTypeEntity>(request, response));
         modelAndView.addObject("page", page);
         return modelAndView;
@@ -37,7 +37,7 @@ public class TypeController {
     public String view(String ids,ModelMap modelMap){
         ArtTypeEntity artTypeEntity=typeService.get(ids);
         modelMap.put("artTypeEntity",artTypeEntity);
-        return "articles_type/update";
+        return "operation_center/articles_type/update";
     }
     @RequestMapping("/update")
     public String update(ArtTypeEntity artTypeEntity){

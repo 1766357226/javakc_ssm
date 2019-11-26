@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhg.javakc.modules.operation_center.articles.dao.ArticlesDao">
+    <select id="findList" resultType="com.zhg.javakc.modules.operation_center.articles.entity.ArticlesEntity">
+       SELECT ARTICLE_ID AS articleId，ARTICLE_NAME AS articleName,VIEW_NUMBER AS viewNumber,ARTICLE_STATUS AS articleStatus,
+       ARTICLE_DESCRIPE AS articleDescripe, IF_RECOMMEND AS ifRecommend FROM CS_ARTICLES WHERE 1=1
+    </select>
+    <insert id="insert">
+        INSERT INTO CS_ARTICLES(ARTICLE_ID,ARTICLE_NAME,VIEW_NUMBER,ARTICLE_STATUS,ARTICLE_DESCRIPE,IF_RECOMMEND) VALUES(#{articleId},#{articleName},#{viewNumber},
+        #{articleStatus},#{articleDescripe},#{ifRecommend})
+    </insert>
+    <select id="get" resultType="com.zhg.javakc.modules.operation_center.articles.entity.ArticlesEntity">
+        SELECT ARTICLE_ID AS articleId,ARTICLE_NAME AS articleName,VIEW_NUMBER AS viewNumber,ARTICLE_STATUS AS articleStatus,ARTICLE_DESCRIPE AS articleDescripe,
+        IF_RECOMMEND AS ifRecommend FROM CS_ARTICLES WHERE ARTICLE_ID=#{0}
+    </select>
+    <update id="update">
+        UPDATE CS_ARTICLES SET ARTICLE_NAME=#{articleName},VIEW_NUMBER=#{viewNumber},ARTICLE_STATUS=#{articleStatus},
+        ARTICLE_DESCRIPE=#{articleDescripe},IF_RECOMMEND=#{ifRecommend} WHERE ARTICLE_ID=#{articleId}
+    </update>
+</mapper>
