@@ -29,7 +29,7 @@ public class Producte extends BaseEntity<Producte> {
     /**
      * 包装 盒装 袋装 瓶装 礼盒装
      */
-    private String goodsPackage;
+    private Integer goodsPackage;
     /**
      * GOODS_WATER	N	NUMBER(1)0:淡水;1:海水
      */
@@ -37,7 +37,7 @@ public class Producte extends BaseEntity<Producte> {
     /**
      * GOODS_UNIT	N	VARCHAR2(50) 单位 :盒 件 千克
      */
-    private String goodsUnit;
+    private Integer goodsUnit;
     /**
      * GOODS_WEIGHT	N	VARCHAR2(10)	Y			净含量
      */
@@ -176,11 +176,11 @@ public class Producte extends BaseEntity<Producte> {
         this.goodsAddress = goodsAddress;
     }
 
-    public String getGoodsPackage() {
+    public Integer getGoodsPackage() {
         return goodsPackage;
     }
 
-    public void setGoodsPackage(String goodsPackage) {
+    public void setGoodsPackage(Integer goodsPackage) {
         this.goodsPackage = goodsPackage;
     }
 
@@ -192,11 +192,11 @@ public class Producte extends BaseEntity<Producte> {
         this.goodsWater = goodsWater;
     }
 
-    public String getGoodsUnit() {
+    public Integer getGoodsUnit() {
         return goodsUnit;
     }
 
-    public void setGoodsUnit(String goodsUnit) {
+    public void setGoodsUnit(Integer goodsUnit) {
         this.goodsUnit = goodsUnit;
     }
 

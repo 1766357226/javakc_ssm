@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>文章分组展示列表页面</title>
-	<%@ include file="../../common/jsp/header.jsp"%>
+	<%@ include file="../../../common/jsp/header.jsp"%>
 </head>
 <body>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -14,7 +14,7 @@
 				<div class="alert alert-success" role="alert">文章分组详细信息</div>
 				<div class="col-sm-8">
 					<div class="btn-group hidden-xs" role="group">
-						<button type="button" class="btn btn-primary" data-toggle="modal" id="create" name="articles_type/create.jsp">
+						<button type="button" class="btn btn-primary" data-toggle="modal" id="create" name="operation_center/articles_type/create.jsp">
 							<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>添加
 						</button>
 						<button type="button" class="btn btn-success" data-toggle="modal" id="update" name="articles_type/view.do">
@@ -45,7 +45,7 @@
 									 style="height: 50px; width: 50px;"
 									 onerror="javascript:this.src='<%=path%>/static/img/a1.jpg'"/></td>
 							<td>${e.typeDescripe }</td>
-							<td>${e.typeStatus }</td>
+							<td><zhg:show value="${e.typeStatus }" codeTp="typeStatus"></zhg:show></td>
 						</tr>
 					</c:forEach>
 					</tbody>

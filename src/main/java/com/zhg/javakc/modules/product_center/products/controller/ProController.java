@@ -5,6 +5,7 @@ import com.zhg.javakc.base.util.CommonUtil;
 import com.zhg.javakc.modules.product_center.products.entity.Producte;
 import com.zhg.javakc.modules.product_center.products.service.ProService;
 import com.zhg.javakc.modules.product_center.products_span.service.SpanService;
+import com.zhg.javakc.modules.purchase_center.supplier_manager.service.SupService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,11 +23,12 @@ public class ProController {
     private ProService proService;
     @Autowired
     private SpanService spanService;
+    private SupService supService;
     @RequiresPermissions("goods:query")
     @RequestMapping("/query")
     public ModelAndView query(Producte entity, HttpServletRequest request, HttpServletResponse response){
-        ModelAndView modelAndView=new ModelAndView("test/list");
-        Page<Producte> page=proService.queryTest(entity,new Page<Producte>(request,response));
+        ModelAndView modelAndView=new ModelAndView("product_center/products/list");
+        Page<Producte> page=proService.query(entity,new Page<Producte>(request,response));
         modelAndView.addObject("page",page);
         return modelAndView;
     }
@@ -41,6 +43,7 @@ public class ProController {
     public String add(ModelMap model)
     {
         model.put("spanList", spanService.findList(null));
+        model.put("supList",supService.findList(null));
         return "product_center/products/create";
     }
     @RequiresPermissions("goods:save")
@@ -61,6 +64,11 @@ public class ProController {
     @RequestMapping("/update")
     public String update(Producte entity){
         proService.update(entity);
+        return"redirect:query.do";
+    }
+    @RequestMapping("/updateStatus")
+    public String updateStatus(Producte entity){
+        proService.updateStatus(entity);
         return"redirect:query.do";
     }
     @RequiresPermissions("goods:delete")

@@ -11,7 +11,7 @@
 				<div class="col-sm-4"><input type="button" value="返回上一页" class="btn btn-success" onclick="javascript:history.back();"/></div>
 			</div>
 			<div class="ibox float-e-margins">
-				<form action="${path }/product/create.do" method="post" enctype="multipart/form-data"
+				<form action="${path }/product/save.do" method="post" enctype="multipart/form-data"
 					class="form-horizontal" role="form">
                     <fieldset>
 						<legend>基本信息 </legend>
@@ -20,9 +20,9 @@
                           	<div class="col-sm-6">
                             	<input class="form-control" id="goodsName" name="goodsName" type="text" placeholder="填写名称"/>
                           	</div>
-							<label for="disabledSelect" class="col-sm-2 control-label">类别</label>
+							<label  class="col-sm-2 control-label">类别</label>
 							<div class="col-sm-4">
-								<zhg:select name="typeId" codeTp="" def="true" cls="form-control"></zhg:select>
+
 							</div>
                        	</div>
                        	<div class="form-group">
@@ -69,11 +69,17 @@
 					<fieldset>
 						<legend>商品属性 </legend>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="supId">供应商:</label>
+							<label class="col-sm-2 control-label">供应商:</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="supId" name="supId" type="text" placeholder="填写名称"/>
+								<select name="supId">
+									<c:forEach var="sup" items="${supList}">
+										<label class="checkbox-inline">
+											<option value="${sup.supId }">${sup.supName }</option>
+										</label>
+									</c:forEach>
+								</select>
 							</div>
-							<label for="disabledSelect" class="col-sm-2 control-label" for="storageCondition">储存条件:</label>
+							<label  class="col-sm-2 control-label" for="storageCondition">储存条件:</label>
 							<div class="col-sm-4">
 								<input class="form-control" id="storageCondition" name="storageCondition" type="text"/>
 							</div>
@@ -99,11 +105,11 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="goodswater">水体:</label>
+							<label class="col-sm-2 control-label" for="goodsWater">水体:</label>
 							<div class="col-sm-4">
-								<zhg:select codeTp="goodswater" name="goodswater" cls="form-control" def="true"></zhg:select>
+								<zhg:select codeTp="goodsWater" name="goodsWater" cls="form-control" def="true"></zhg:select>
 							</div>
-							<label class="col-sm-2 control-label" for="goodsUnit">包装:</label>
+							<label class="col-sm-2 control-label" for="goodsUnit">单位:</label>
 							<div class="col-sm-4">
 								<zhg:select codeTp="goodsUnit" name="goodsUnit" cls="form-control" def="true"></zhg:select>
 							</div>
@@ -118,7 +124,7 @@
 					<fieldset>
 						<legend>商品标签 </legend>
                        	<div class="form-group">
-                          	<label class="col-sm-2 control-label" for="spanId">绑定角色</label>
+                          	<label class="col-sm-2 control-label" >选择标签</label>
                           	<div class="col-sm-10">
                             	<c:forEach var="span" items="${spanList}">
                             		<label class="checkbox-inline">
