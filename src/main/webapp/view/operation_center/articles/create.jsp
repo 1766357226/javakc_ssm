@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>文章分组添加页面</title>
-		<%@ include file="../../common/jsp/header.jsp"%>
+		<title>文章管理添加页面</title>
+		<%@ include file="../../../common/jsp/header.jsp"%>
 		<link href="${path }/static/css/plugins/file-input/fileinput.min.css" rel="stylesheet">
 	</head>
 	<body>
@@ -12,23 +12,38 @@
 				<div class="col-sm-4"><input type="button" value="返回上一页" class="btn btn-success" onclick="javascript:history.back();"/></div>
 			</div>
 			<div class="ibox float-e-margins">
-				<form action="${path }/articles_type/save.do" method="post" class="form-horizontal" role="form">
+				<form action="${path }/article/save.do" method="post" class="form-horizontal" role="form">
                     <fieldset>
-                        <legend>文章分组基本信息</legend>
+                        <legend>文章管理基本信息</legend>
                        <div class="form-group">
-                          <label class="col-sm-2 control-label" for="ds_host">分组名称</label>
+                          <label class="col-sm-2 control-label" for="ds_host">标题</label>
                           <div class="col-sm-4">
-                             <input class="form-control" type="text" name="typeName" placeholder="分组名称"/>
+                             <input class="form-control" type="text" name="articleName" placeholder="标题"/>
                           </div>
-						   <label class="col-sm-2 control-label" for="ds_host">描述</label>
+					   </div>
+						<div class="form-group">
+						   <label class="col-sm-2 control-label" for="ds_host">浏览量</label>
 						   <div class="col-sm-4">
-							   <textarea class="form-control"  name="typeDescripe" placeholder="描述"></textarea>
-						   </div>
-						   <label class="col-sm-2 control-label" for="ds_host">分组状态</label>
+							   <input class="form-control" type="text" name="viewNumber" placeholder="浏览量"/></div>
+						</div>
+						<div class="form-group">
+						   <label class="col-sm-2 control-label" for="ds_host">状态</label>
 						   <div class="col-sm-4">
-							   <input class="form-control" type="text" name="typeStatus" placeholder="分组状态"/>
+							   <zhg:select codeTp="typeStatus" name="articleStatus" cls="form-control" def="true"></zhg:select>
 						   </div>
 					   </div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="ds_host">文章描述</label>
+							<div class="col-sm-4">
+								<textarea class="form-control"  name="articleDescripe" placeholder="文章描述"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="ds_host">是否推荐</label>
+							<div class="col-sm-4">
+								<zhg:select codeTp="typeStatus" name="ifRecommend" cls="form-control" def="true"></zhg:select>
+							</div>
+						</div>
                     </fieldset>
                     <fieldset>
                         <div class="form-group">
