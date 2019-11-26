@@ -3,8 +3,8 @@
 <mapper namespace="com.zhg.javakc.modules.product_center.products_span.dao.SpanDao">
 
 	<select id="findList" resultType="com.zhg.javakc.modules.product_center.products_span.entity.Span">
-      select span_id as spanId,span_number as spanNumber,span_descript as spanDescript,span_name as spanName
-      from cs_good_span where 1=1
+      select p.span_id as spanId,p.span_number as spanNumber,p.span_descript as spanDescript,p.span_name as spanName,
+      g.goods_sum as goodsSum from cs_goods g,cs_good_span p,cs_goods_span r where r.goods_id=g.goods_id and r.span_id=p.span_id
 
     </select>
 
@@ -14,6 +14,14 @@
             #{id}
         </foreach>
     </delete>
+
+    <insert id="insert">
+        insert into cs_good_span(span_id,span_number,span_descript,span_name) values (#{spanId},#{spanNumber},#{spanDescript},#{spanName})
+    </insert>
+
+    <select id="get" resultType="com.zhg.javakc.modules.product_center.products_span.entity.Span">
+         select span_id as spanId,span_number as spanNumber,span_descript as spanDescript,span_name as spanName from cs_good_span where span_id=#{spanId}
+    </select>
 
 	
 </mapper>

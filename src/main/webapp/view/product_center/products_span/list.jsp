@@ -14,16 +14,14 @@
 	                <div class="alert alert-success" role="alert">标签信息</div>
 	                <div class="col-sm-8">
 	                	<div class="btn-group hidden-xs" role="group">
-                			<button type="button" class="btn btn-primary" data-toggle="modal" id="create" name="test/create.jsp">
+                			<button type="button" class="btn btn-primary" data-toggle="modal" id="create" name="product_center/products_span/create.jsp">
 	                            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>新增
 	                        </button>
 
 
 		                 </div>
 	                </div>
-	                <div class="col-sm-4">
-	                	<input class="form-control" id="search" name="testName" value="${Span.spanName}" type="text" placeholder="查询内容 回车搜索"/>
-	                </div>
+
 	                 <!-- ------------按钮组 end------------ -->
 						<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 						<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
@@ -45,20 +43,17 @@
                                         <td><input type="checkbox" name="ids" value="${e.spanId }"/></td>
 
                                         <td>${e.spanName}</td>
-						                <td>${e.spanNumber}</td>
+						                <td>${e.goodsSum}</td>
                                         <td>${e.spanDescript}</td>
 						                <td>
-                                            <button type="button" class="btn btn-success" data-toggle="modal" id="update" name="test/view.do">
-                                                <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>修改
-                                            </button>
+											<button type="button" class="btn btn-link" onclick="update('span/update')">编辑</button>
 
-                                            <button type="button" class="btn btn-success" data-toggle="modal" id="query" name="test/queryById.do">
-                                                <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>详情
-                                            </button>
 
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" id="delete" name="span/delete.do">
-                                                <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>删除
-                                            </button>
+											<button type="button" class="btn btn-link" onclick="look('span/look')">详情</button>
+
+											<button type="button" class="btn btn-danger" data-toggle="modal" id="delete" name="span/delete.do">
+												<i class="glyphicon glyphicon-trash" aria-hidden="true"></i>删除
+											</button>
                                         </td>
 						            </tr>
 					            </c:forEach>
@@ -70,4 +65,5 @@
 			</div>
 		</div>
 	</body>
+	<script type="text/javascript" src="${path }/view/product_center/products_span/js/list.js"></script>
 </html>
