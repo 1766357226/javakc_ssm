@@ -11,7 +11,7 @@
 				<div class="col-sm-4"><input type="button" value="返回上一页" class="btn btn-success" onclick="javascript:history.back();"/></div>
 			</div>
 			<div class="ibox float-e-margins">
-				<form action="${path }/product/update.do" method="post" enctype="multipart/form-data"
+				<form action="" method="post" enctype="multipart/form-data"
 					class="form-horizontal" role="form">
 					<input type="hidden" name="goodsId" value="${entity.goodsId }" />
                     <fieldset>
@@ -59,7 +59,7 @@
                        	<div class="form-group">
 							<label class="col-sm-2 control-label" >退换货：</label>
 							<div class="col-sm-4">
-								<zhg:select value="${entity.ifHexchange}" codeTp="ifHexchange"></zhg:select>
+								<zhg:show value="${entity.ifHexchange}" codeTp="ifHexchange"></zhg:show>
 							</div>
 							<label class="col-sm-2 control-label" for="goodsSearch">搜索关键字：</label>
 							<div class="col-sm-4">
@@ -167,18 +167,6 @@
 							</tbody>
 						</table>
 					</fieldset>
-                    <fieldset>
-                        <div class="form-group">
-                        	<label class="col-sm-2 control-label"></label>
-                           <div class="col-sm-4">
-                              <input type="submit" value="提交" class="btn btn-primary"/>
-                           </div>
-                           <label class="col-sm-2 control-label"></label>
-                           <div class="col-sm-4">
-                              <input type="reset" value="重置" class="btn btn-danger"/>
-                           </div>
-                        </div>
-                    </fieldset>
                 </form>
 			</div>
 		</div>

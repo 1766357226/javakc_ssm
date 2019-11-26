@@ -10,5 +10,5 @@ public interface ProDao extends BaseDao<Producte> {
 
     public void deleteRelation(String goodsId);
 
-   public int updateStatus(Producte entity);
+
 }

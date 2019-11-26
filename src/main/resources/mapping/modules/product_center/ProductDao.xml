@@ -26,7 +26,10 @@
       <result property="goodsSearch" column="GOODS_SEARCH"/>
       <result property="typeId" column="TYPE_ID"/>
       <result property="articleId" column="ARTICLE_ID"/>
-      <result property="supId" column="sup_ID "/>
+      <result property="supId" column="SUP_ID"/>
+       <result property="articleName" column="article_name"/>
+       <result property="typeName" column="type_name"/>
+       <result property="supName" column="sup_name"/>
       <collection property="spanList" column="span_id" javaType="ArrayList" ofType="String">
          <result column="span_ID" />
       </collection>
@@ -37,11 +40,11 @@
            c.GOODS_DESCRIBTION, c.PRO_TIME, c.GOODS_IFHEXCHANGE, c.GOODS_SUM,c.GOODS_STORAGE_CONDITION,
            c.GOODS_BRAND, c.GOODS_SAVE_TIME,c.GOODS_ADDRESS,c.GOODS_PACEING,
            c.GOODS_WATER,c.GOODS_UNIT,c.GOODS_WEIGHT,c.GOODS_SALES,
-           c.GOODS_STATUS,c.GOODS_SEARCH,c.TYPE_ID,c.ARTICLE_ID, c.SUP_ID
+           c.GOODS_STATUS,c.GOODS_SEARCH,c.TYPE_ID,c.ARTICLE_ID,c.SUP_ID
        </sql>
 
         <select id="findList" resultMap="goodsSpan">
-           SELECT <include refid="allColumn"></include>,gs.span_Name as SPAN_ID from
+           SELECT <include refid="allColumn"></include>,gs.span_Name as SPAN_ID,a.article_name ,t.type_name ,s.sup_name  from
            CS_GOODS c,cs_articles a, cs_good_span gs, goods_type t,cs_goods_span cs, cs_supplier s
            <where>
            c.GOODS_id=cs.goods_id
@@ -55,19 +58,19 @@
 
     <insert id="insert">
 		INSERT INTO CS_GOODS
-		 ( GOODS_ID,GOODS_NAME,GOODS_NUMBER, GOODS_VIEW_PRICE, GOODS_PRICE,GOODS_REAL_PRICE,
-           GOODS_DESCRIBTION, PRO_TIME, GOODS_IFHEXCHANGE, GOODS_SUM,GOODS_STORAGE_CONDITION,
+		 ( GOODS_ID,GOODS_NAME,GOODS_NUMBER,GOODS_VIEW_PRICE,GOODS_PRICE,GOODS_REAL_PRICE,
+           GOODS_DESCRIBTION,PRO_TIME,GOODS_IFHEXCHANGE,GOODS_SUM,GOODS_STORAGE_CONDITION,
            GOODS_BRAND,GOODS_SAVE_TIME,GOODS_ADDRESS,GOODS_PACEING,
            GOODS_WATER,GOODS_UNIT,GOODS_WEIGHT,GOODS_SALES,
            GOODS_STATUS,GOODS_SEARCH,TYPE_ID,ARTICLE_ID,SUP_ID)
 		 VALUES
-			(#{goodsId}, #{goodsName}, #{goodsNumber}, #{viewPrice}, #{goodsPrice}, #{realPrice}, #{goodsDescripte},
+			(#{goodsId},#{goodsName},#{goodsNumber},#{viewPrice},#{goodsPrice},#{realPrice},#{goodsDescripte},
 			#{proTime},#{ifHexchange},#{goodsSum},#{storageCondition},#{goodsBrand},#{goodsSavetime},
-			#{goodsAddress}#{goodsPackage},#{goodsWater},#{goodsUnit},#{goodsWeight},#{goodsSales},#{goodsStatus},
+			#{goodsAddress},#{goodsPackage},#{goodsWater},#{goodsUnit},#{goodsWeight},#{goodsSales},#{goodsStatus},
 			#{goodsStatus},#{goodsSearch},#{typeId},#{articleId},#{supId})
 	</insert>
    <insert id="insertRelation" parameterType="Map">
-      INSERT INTO CS_GOODS_SPAN(GOODS_ID, SPAN_ID) VALUES(#{goodsId}, #{spanId})
+      INSERT INTO CS_GOODS_SPAN(GOODS_ID, SPAN_ID) VALUES(#{goodsId},#{spanId})
       <!-- 		 INSERT INTO DATA_USER_ROLE(USER_ID, ROLE_ID)  -->
       <!-- 		 SELECT #{userId}, RID FROM -->
       <!-- 	    <foreach collection="roleIds" item="id" open="(" separator="UNION ALL" close=")"> -->
@@ -78,10 +81,11 @@
    </insert>
 
    <select id="get" resultMap="goodsSpan">
-      SELECT <include refid="allColumn"></include>,gs.span_id,s.sup_id from
+      SELECT <include refid="allColumn"></include>,gs.span_id,a.article_name ,t.type_name ,s.sup_name from
       CS_GOODS c,cs_articles a,cs_good_span gs,goods_type t,cs_goods_span cs,cs_supplier s
       <where>
       c.goods_id=cs.goods_id
+      and cs.span_id=gs.span_id
       and c.article_id=a.article_id
       and c.type_id=t.type_id
       and c.sup_id=s.sup_id
@@ -101,9 +105,6 @@
         WHERE GOODS_ID = #{goodsId}
 	</update>
 
-   <update id="updateStatus">
-      update cs_goods set GOODS_STATUS=2  WHERE GOODS_ID = #{goodsId}
-   </update>
    <delete id="delete" parameterType="java.lang.String">
       <![CDATA[
 	       DELETE FROM CS_GOODS WHERE GOODS_ID IN

@@ -64,10 +64,7 @@ public class ProService extends BaseService<ProDao, Producte> {
             proDao.insertRelation(data);
         }
     }
-    @Transactional(readOnly = false)
-    public void updateStatus(Producte entity){
-        proDao.updateStatus(entity);
-    }
+
     /**
      * 删除用户及相关信息
      */

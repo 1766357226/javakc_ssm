@@ -17,12 +17,12 @@
 						<legend>基本信息 </legend>
                        	<div class="form-group">
                           	<label class="col-sm-2 control-label" for="goodsName">名称:</label>
-                          	<div class="col-sm-6">
+                          	<div class="col-sm-4">
                             	<input class="form-control" id="goodsName" name="goodsName" type="text" placeholder="填写名称"/>
                           	</div>
 							<label  class="col-sm-2 control-label">类别</label>
 							<div class="col-sm-4">
-
+								<input class="form-control" id="typeId" name="typeId" type="text" />
 							</div>
                        	</div>
                        	<div class="form-group">
@@ -67,17 +67,13 @@
                        	</div>
 					</fieldset>
 					<fieldset>
-						<legend>商品属性 </legend>
+						<legend>商品属性</legend>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">供应商:</label>
 							<div class="col-sm-4">
-								<select name="supId">
-									<c:forEach var="sup" items="${supList}">
-										<label class="checkbox-inline">
-											<option value="${sup.supId }">${sup.supName }</option>
-										</label>
-									</c:forEach>
-								</select>
+								<c:forEach var="sup" items="${supList}">
+								<zhg:select codeTp="" value="${sup.supName}" def="true"></zhg:select>
+								</c:forEach>
 							</div>
 							<label  class="col-sm-2 control-label" for="storageCondition">储存条件:</label>
 							<div class="col-sm-4">
@@ -113,11 +109,11 @@
 							<div class="col-sm-4">
 								<zhg:select codeTp="goodsUnit" name="goodsUnit" cls="form-control" def="true"></zhg:select>
 							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label" for="goodsWeight">净含量:</label>
-								<div class="col-sm-4">
-									<input class="form-control" id="goodsWeight" name="goodsWeight" />
-								</div>
+							</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="goodsWeight">净含量:</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="goodsWeight" name="goodsWeight" />
 							</div>
 						</div>
 					</fieldset>

@@ -2,6 +2,7 @@ package com.zhg.javakc.modules.product_center.products.entity;
 
 import com.zhg.javakc.base.entity.BaseEntity;
 
+import java.util.Date;
 import java.util.List;
 
 public class Producte extends BaseEntity<Producte> {
@@ -13,7 +14,7 @@ public class Producte extends BaseEntity<Producte> {
     private Integer goodsPrice;
     private Integer realPrice;
     private String goodsDescripte;
-    private String proTime;
+    private Date proTime;
     /**
      * GOODS_IFHEXCHANGE	N	NUMBER(1)	Y	0:支持;1:不支持
      */
@@ -61,8 +62,35 @@ public class Producte extends BaseEntity<Producte> {
     private String articleId;
     //    SUP_ID	N	CHAR(32)	Y			供货商
     private String supId;
+    private String typeName;
+    private String supName;
+    private String articleName;
     private String spanName;
     private List<String> spanList;
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
+    public String getSupName() {
+        return supName;
+    }
+
+    public void setSupName(String supName) {
+        this.supName = supName;
+    }
+
+    public String getArticleName() {
+        return articleName;
+    }
+
+    public void setArticleName(String articleName) {
+        this.articleName = articleName;
+    }
 
     public String getGoodsId() {
         return goodsId;
@@ -120,11 +148,11 @@ public class Producte extends BaseEntity<Producte> {
         this.goodsDescripte = goodsDescripte;
     }
 
-    public String getProTime() {
+    public Date getProTime() {
         return proTime;
     }
 
-    public void setProTime(String proTime) {
+    public void setProTime(Date proTime) {
         this.proTime = proTime;
     }
 

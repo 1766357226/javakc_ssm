@@ -121,6 +121,14 @@ $(function()
 				return false;
 			}
 		}
+		else if(type == 'look')
+		{
+			if(selected != 1)
+			{
+				swal({title:"温馨提示",text:"查看信息时,您只能选择一条记录查看！"});
+				return false;
+			}
+		}
 		else if(type == 'delete')
 		{
 			if(selected == 0)

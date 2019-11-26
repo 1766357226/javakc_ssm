@@ -53,26 +53,26 @@
 					        	<c:forEach var="u" items="${page.list }" varStatus="v">
 						            <tr >
 						                <td><input type="checkbox" name="ids" value="${u.goodsId }"/></td>
-<%--						                <td>${v.count+(page.pageNo-1)*page.pageSize }</td>--%>
+											<%-- <td>${v.count+(page.pageNo-1)*page.pageSize }</td>--%>
 						                <td width="300px">
 											<span>商品编码:${u.goodsNumber}</span><br>
-											<span>商品类型:${u.typeId}</span><br>
-											${u.goodsName }<br>
+											<span>商品类型:${u.typeName}</span><br>
+											<span>${u.goodsName }</span><br>
 											<span>
 												<c:forEach items="${u.spanList}" var="r">
 													${r}
 												</c:forEach>
 											</span>
-											<button type="button" class="btn btn-success" data-toggle="modal" value="修改" id="updateSpan"/>
+											<button type="button" class="btn btn-success" data-toggle="modal" id="updateSpan"/>
 										</td>
 						                <td>零售价：￥${u.goodsPrice }</td>
 						                <td>${u.goodsSum}</td>
 										<td>${u.goodsSales}</td>
 										<td><zhg:show codeTp="goodsStatus" value="${u.goodsStatus}"></zhg:show></td>
 										<td>
-											<button type="button" class="btn btn-danger" data-toggle="modal" id="out" name="product/updateStatus.do">下架</button>
-											<button type="button" class="btn btn-success" data-toggle="modal" id="update" name="product/get.do">编辑</button>
-											<button type="button" class="btn btn-inverse" data-toggle="modal" id="info" name="product/get.do">详情</button>
+											<button type="button" class="btn btn-danger"  >下架</button>
+											<button type="button" class="btn btn-success" data-toggle="modal" onclick="update('product/get')" >编辑</button>
+											<button type="button" class="btn btn-primary" onclick="look('product/look')">详情</button>
 										</td>
 						            </tr>
 					            </c:forEach>
