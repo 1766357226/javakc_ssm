@@ -30,7 +30,7 @@ public class SupService extends BaseService<SupDao, SupplierEntity> {
         return supDao.findBySup(id);
     }
 
-    public List<SupplierEntity> fingByName(){
-        return supDao.fingByName();
+    public List<SupplierEntity> findByName(){
+        return supDao.findByName();
     }
 }

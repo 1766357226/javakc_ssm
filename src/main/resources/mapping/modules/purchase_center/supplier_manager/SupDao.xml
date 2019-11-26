@@ -13,7 +13,7 @@
     <update id="update">
          update cs_supplier set sup_name=#{supName},sup_descripte=#{supDescripte},sup_address=#{supAddress},info_contacts=#{infoContacts},info_phone=#{infoPhone},info_contacts2=#{infoContacts2},info_phone2=#{infoPhone2},info_rcjin=#{infoRcjin} where sup_id=#{supId}
     </update>
-    <select id="fingByName" resultType="com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupplierEntity">
+    <select id="findByName" resultType="com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupplierEntity">
         select sup_id AS supId,sup_name AS supName from cs_supplier
     </select>
 

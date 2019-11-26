@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface SupDao extends BaseDao<SupplierEntity> {
     public List<SupGoodsEntity> findBySup(String id);
-    public List<SupplierEntity> fingByName();
+    public List<SupplierEntity> findByName();
 
 }
