@@ -8,7 +8,7 @@
       <result property="goodsNumber" column="goods_number" />
       <result property="viewPrice" column="goods_view_price" />
       <result property="goodsPrice" column="goods_price" />
-      <result property="realPrice " column="goods_real_price" />
+      <result property="realPrice" column="goods_real_price" />
       <result property="goodsDescripte" column="GOODS_DESCRIBTION"/>
       <result property="proTime" column="pro_time" />
       <result property="ifHexchange" column="GOODS_IFHEXCHANGE" />
@@ -16,16 +16,16 @@
       <result property="storageCondition" column="GOODS_STORAGE_CONDITION" />
       <result property="goodsBrand" column="GOODS_BRAND" />
       <result property="goodsSavetime" column="GOODS_SAVE_TIME" />
-      <result property="goodsAddress " column="GOODS_ADDRESS" />
-      <result property="goodsPackage " column="GOODS_PACEING" />
+      <result property="goodsAddress" column="GOODS_ADDRESS" />
+      <result property="goodsPackage" column="GOODS_PACEING" />
       <result property="goodsWater" column="GOODS_WATER" />
       <result property="goodsUnit" column="GOODS_UNIT" />
-      <result property="goodsWeight" column="GOODS_WEIGHT "/>
-      <result property="goodsSales" column="c.GOODS_SALES"/>
-      <result property="goodsStatus " column="c.GOODS_STATUS "/>
-      <result property="goodsSearch " column="GOODS_SEARCH "/>
-      <result property="typeId " column="TYPE_ID "/>
-      <result property="articleId" column="ARTICLE_ID "/>
+      <result property="goodsWeight" column="GOODS_WEIGHT"/>
+      <result property="goodsSales" column="GOODS_SALES"/>
+      <result property="goodsStatus" column="GOODS_STATUS"/>
+      <result property="goodsSearch" column="GOODS_SEARCH"/>
+      <result property="typeId" column="TYPE_ID"/>
+      <result property="articleId" column="ARTICLE_ID"/>
       <result property="supId" column="sup_ID "/>
       <collection property="spanList" column="span_id" javaType="ArrayList" ofType="String">
          <result column="span_ID" />
@@ -43,11 +43,13 @@
         <select id="findList" resultMap="goodsSpan">
            SELECT <include refid="allColumn"></include>,gs.span_Name as SPAN_ID from
            CS_GOODS c,cs_articles a, cs_good_span gs, goods_type t,cs_goods_span cs, cs_supplier s
-           where c.GOODS_id=cs.goods_id
+           <where>
+           c.GOODS_id=cs.goods_id
            and cs.span_id=gs.span_id
            and c.article_id=a.article_id
            and c.type_id=t.type_id
            and c.sup_id=s.sup_id
+           </where>
         </select>
 
 
@@ -76,14 +78,15 @@
    </insert>
 
    <select id="get" resultMap="goodsSpan">
-      SELECT <include refid="allColumn"></include>,s.spanName as SPAN_ID from
-      CS_GOODS c,cs_article a, cs_good_span gs, goods_type t,cs_goods_span cs, cs_supplier s
-      where c.GOODS_id=cs.goods_id
-      and cs.span_id=gs.span_id
+      SELECT <include refid="allColumn"></include>,gs.span_id,s.sup_id from
+      CS_GOODS c,cs_articles a,cs_good_span gs,goods_type t,cs_goods_span cs,cs_supplier s
+      <where>
+      c.goods_id=cs.goods_id
       and c.article_id=a.article_id
       and c.type_id=t.type_id
       and c.sup_id=s.sup_id
-      and c.goods_id=#{id}
+      and c.goods_id=#{0}
+      </where>
    </select>
 
    <update id="update">
@@ -98,6 +101,9 @@
         WHERE GOODS_ID = #{goodsId}
 	</update>
 
+   <update id="updateStatus">
+      update cs_goods set GOODS_STATUS=2  WHERE GOODS_ID = #{goodsId}
+   </update>
    <delete id="delete" parameterType="java.lang.String">
       <![CDATA[
 	       DELETE FROM CS_GOODS WHERE GOODS_ID IN
