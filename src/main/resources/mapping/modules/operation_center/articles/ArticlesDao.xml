@@ -4,6 +4,12 @@
     <select id="findList" resultType="com.zhg.javakc.modules.operation_center.articles.entity.ArticlesEntity">
        SELECT ARTICLE_ID AS articleId，ARTICLE_NAME AS articleName,VIEW_NUMBER AS viewNumber,ARTICLE_STATUS AS articleStatus,
        ARTICLE_DESCRIPE AS articleDescripe, IF_RECOMMEND AS ifRecommend FROM CS_ARTICLES WHERE 1=1
+        <if test="articleName!='' and articleName!=null">
+            AND ARTICLE_NAME LIKE '%'||#{articleName}||'%'
+        </if>
+        <if test="articleStatus!='' and articleStatus!=null">
+            AND ARTICLE_STATUS=#{articleStatus}
+        </if>
     </select>
     <insert id="insert">
         INSERT INTO CS_ARTICLES(ARTICLE_ID,ARTICLE_NAME,VIEW_NUMBER,ARTICLE_STATUS,ARTICLE_DESCRIPE,IF_RECOMMEND) VALUES(#{articleId},#{articleName},#{viewNumber},
@@ -17,4 +23,13 @@
         UPDATE CS_ARTICLES SET ARTICLE_NAME=#{articleName},VIEW_NUMBER=#{viewNumber},ARTICLE_STATUS=#{articleStatus},
         ARTICLE_DESCRIPE=#{articleDescripe},IF_RECOMMEND=#{ifRecommend} WHERE ARTICLE_ID=#{articleId}
     </update>
+    <delete id="delete">
+        DELETE FROM CS_ARTICLES WHERE ARTICLE_ID IN
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <select id="findByName" resultType="com.zhg.javakc.modules.operation_center.articles.entity.ArticlesEntity">
+        select ARTICLE_ID AS articleId,ARTICLE_NAME AS articleName from CS_ARTICLES
+    </select>
 </mapper>
