@@ -46,8 +46,7 @@
 						                <td>${e.goodsSum}</td>
                                         <td>${e.spanDescript}</td>
 						                <td>
-											<button type="button" class="btn btn-link" onclick="update('span/update')">编辑</button>
-
+											<button type="button" class="btn btn-link" onclick="fff('span/lookData')">编辑</button>
 
 											<button type="button" class="btn btn-link" onclick="look('span/look')">详情</button>
 
