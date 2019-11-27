@@ -11,7 +11,7 @@
 				<div class="col-sm-4"><input type="button" value="返回上一页" class="btn btn-success" onclick="javascript:history.back();"/></div>
 			</div>
 			<div class="ibox float-e-margins">
-				<form action="${path }/span/update.do" method="post" enctype="multipart/form-data"
+				<form action="${path }/span/look.do" method="post" enctype="multipart/form-data"
 					class="form-horizontal" role="form">
 					<input type="hidden" name="spanId" value="${entity.spanId }" />
                     <fieldset style="border: 1px solid #777777;">

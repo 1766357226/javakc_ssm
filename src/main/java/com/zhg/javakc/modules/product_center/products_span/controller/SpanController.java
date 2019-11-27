@@ -7,8 +7,10 @@ import com.zhg.javakc.modules.product_center.products.entity.Producte;
 import com.zhg.javakc.modules.product_center.products.service.ProService;
 import com.zhg.javakc.modules.product_center.products_span.entity.Span;
 import com.zhg.javakc.modules.product_center.products_span.entity.SpanGoodsEntity;
+import com.zhg.javakc.modules.product_center.products_span.entity.SpanTypeEntity;
 import com.zhg.javakc.modules.product_center.products_span.service.SpanService;
 import com.zhg.javakc.modules.product_center.products_span.service.SpanGoodsService;
+import com.zhg.javakc.modules.product_center.products_span.service.SpanTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,6 +33,8 @@ public class SpanController {
     @Autowired
     private SpanGoodsService spanGoodsService;
 
+    @Autowired
+    private SpanTypeService spanTypeService;
     private SpanGoodsEntity spanGoodsEntity;
     @RequestMapping("querySpan")
     public ModelAndView querySpan(Span span, HttpServletRequest request, HttpServletResponse response){
@@ -85,6 +89,34 @@ public class SpanController {
         spanService.update(entity);
         return  "redirect:/span/querySpan.do";
     }
+
+    @RequestMapping("/lookData/{id}")
+    public String updateSpan(@PathVariable String id, ModelMap map){
+        map.put("entity",spanService.get(id));
+        map.put("page", spanGoodsService.findByGoods(id));
+        map.put("good",spanGoodsService.get(id));
+        map.put("type",spanTypeService.get(id));
+        return "product_center/products_span/update";
+    }
+
+
+
+    @RequestMapping("/updateSpan")
+    public String updateSpan(Span span, SpanGoodsEntity spanGoodsEntity, SpanTypeEntity spanTypeEntity){
+
+//        span.getSpanId();
+//        spanGoodsEntity.getGoodsId();
+//        spanTypeEntity.getTypeId();
+        spanService.update(span);
+        spanGoodsService.update(spanGoodsEntity);
+        spanTypeService.update(spanTypeEntity);
+        return "redirect:querySpan.do";
+    }
+
+
+
+
+
 
 //    @RequestMapping("querySpan")
 //    public String querySup(Span span, HttpServletRequest request, HttpServletResponse response, ModelMap model){
