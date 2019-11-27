@@ -71,9 +71,11 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label">供应商:</label>
 							<div class="col-sm-4">
+								<select  class="form-control input-medium" >
 								<c:forEach var="sup" items="${supList}">
-								<zhg:select codeTp="" value="${sup.supName}" def="true"></zhg:select>
+                                    <option value="${sup.supId}">${sup.supName}</option>
 								</c:forEach>
+                                </select>
 							</div>
 							<label  class="col-sm-2 control-label" for="storageCondition">储存条件:</label>
 							<div class="col-sm-4">

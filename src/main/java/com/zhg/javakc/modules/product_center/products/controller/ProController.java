@@ -2,6 +2,8 @@ package com.zhg.javakc.modules.product_center.products.controller;
 
 import com.zhg.javakc.base.page.Page;
 import com.zhg.javakc.base.util.CommonUtil;
+import com.zhg.javakc.modules.operation_center.articles.service.ArticlesService;
+import com.zhg.javakc.modules.operation_center.articles_type.service.TypeService;
 import com.zhg.javakc.modules.product_center.products.entity.Producte;
 import com.zhg.javakc.modules.product_center.products.service.ProService;
 import com.zhg.javakc.modules.product_center.products_span.service.SpanService;
@@ -26,7 +28,10 @@ public class ProController {
     private SpanService spanService;
     @Autowired
     private SupService supService;
-
+    @Autowired
+    private ArticlesService articlesService;
+    @Autowired
+    private TypeService typeService;
 
     @RequestMapping("/query")
     public ModelAndView query(Producte entity, HttpServletRequest request, HttpServletResponse response){
@@ -46,7 +51,9 @@ public class ProController {
     public String add(ModelMap model)
     {
         model.put("spanList", spanService.findList(null));
-        model.put("supList",supService.findList(null));
+        model.put("supList",supService.findByName());
+//        model.put("articleList",articlesService.findByName);
+//        model.put("typeList",typeService.findByName);
         return "product_center/products/create";
     }
 
@@ -67,6 +74,12 @@ public class ProController {
     @RequestMapping("/update")
     public String update(Producte entity){
         proService.update(entity);
+        return"redirect:product/query.do";
+    }
+    @RequestMapping("/updateStatus/{id}")
+    public String updateStatus(@PathVariable String id ,ModelMap modelMap){
+        proService.updateStatus(id);
+        modelMap.put("goodsStatus",2);
         return"redirect:product/query.do";
     }
 

@@ -23,7 +23,7 @@
                           	</div>
 							<label  class="col-sm-2 control-label">类别</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="typeId" name="typeId" value="${entity.typeId}"/>
+								<input class="form-control" id="typeName" name="typeName" value="${entity.typeName}"/>
 							</div>
                        	</div>
                        	<div class="form-group">
@@ -72,7 +72,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label" >供应商:</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="supId" name="supId" value="${entity.supId}"/>
+								<input class="form-control" id="supName" name="supName" value="${entity.supName}"/>
 							</div>
 							<label class="col-sm-2 control-label" for="storageCondition">储存条件:</label>
 							<div class="col-sm-4">
@@ -119,7 +119,7 @@
 					<fieldset>
 						<legend>商品标签 </legend>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="spanId"></label>
+							<label class="col-sm-2 control-label" ></label>
 							<div class="col-sm-10">
 								<c:forEach var="span" items="${spanList}">
 									<c:set var="flag" value="0"></c:set>
@@ -155,10 +155,10 @@
 							<tbody>
 								<tr >
 									<td>
-										${entity.articleId}
+										${entity.articleName}
 									</td>
 									<td>
-
+                                      ${entity.artTypeName}
 									</td>
 									<td>
 										<button type="button" class="btn btn-inverse" data-toggle="modal" id="info" name="product/deleteArt.do">移除</button>

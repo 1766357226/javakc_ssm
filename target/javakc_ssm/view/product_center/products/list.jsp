@@ -70,7 +70,7 @@
 										<td>${u.goodsSales}</td>
 										<td><zhg:show codeTp="goodsStatus" value="${u.goodsStatus}"></zhg:show></td>
 										<td>
-											<button type="button" class="btn btn-danger"  >下架</button>
+											<button type="button" class="btn btn-danger" onclick="updateStatus('product/updateStatus')" >下架</button>
 											<button type="button" class="btn btn-success" data-toggle="modal" onclick="update('product/get')" >编辑</button>
 											<button type="button" class="btn btn-primary" onclick="look('product/look')">详情</button>
 										</td>
