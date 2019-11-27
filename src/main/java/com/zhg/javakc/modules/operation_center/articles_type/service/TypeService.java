@@ -24,5 +24,8 @@ public class TypeService extends BaseService<TypeDao, ArtTypeEntity> {
         page.setList(artList);
         return page;
     }
+    public List<ArtTypeEntity> findByName(){
+        return typeDao.findByName();
+    }
 
 }
