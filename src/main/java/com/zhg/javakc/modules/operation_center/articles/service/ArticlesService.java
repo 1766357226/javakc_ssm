@@ -25,5 +25,8 @@ public class ArticlesService extends BaseService<ArticlesDao, ArticlesEntity> {
         page.setList(articleList);
         return page;
     }
+      public List<ArticlesEntity> findByName(){
+        return articlesDao.findByName();
+    }
 
 }

@@ -52,8 +52,8 @@ public class ProController {
     {
         model.put("spanList", spanService.findList(null));
         model.put("supList",supService.findByName());
-//        model.put("articleList",articlesService.findByName);
-//        model.put("typeList",typeService.findByName);
+        model.put("articleList",articlesService.findByName());
+        model.put("typeList",typeService.findByName());
         return "product_center/products/create";
     }
 
@@ -68,13 +68,16 @@ public class ProController {
         Producte entity= proService.get(id);
         modelMap.put("entity",entity);
         modelMap.put("spanList", spanService.findList(null));
+        modelMap.put("supList",supService.findByName());
+        modelMap.put("articleList",articlesService.findByName());
+        modelMap.put("typeList",typeService.findByName());
       return "/product_center/products/update";
     }
 
     @RequestMapping("/update")
     public String update(Producte entity){
         proService.update(entity);
-        return"redirect:product/query.do";
+        return "redirect:/product/query.do";
     }
     @RequestMapping("/updateStatus/{id}")
     public String updateStatus(@PathVariable String id ,ModelMap modelMap){
@@ -86,7 +89,7 @@ public class ProController {
     @RequestMapping("/delete")
     public String delete(String[] ids){
         proService.delete(ids);
-        return "redirect:query.do";
+        return "redirect:product/query.do";
     }
 
     @RequestMapping("/look/{id}")

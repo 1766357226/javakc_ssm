@@ -9,10 +9,12 @@ import com.zhg.javakc.modules.test.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 @RequestMapping("/article")
@@ -43,10 +45,16 @@ public class ArticlesController {
         articlesService.update(articlesEntity);
         return "redirect:queryArticle.do";
     }
+
     @RequestMapping("/delete")
     public String delete(String[] ids){
         articlesService.delete(ids);
         return "redirect:queryArticle.do";
+    }
+    @RequestMapping("/detail/{id}")
+    public String detail(@PathVariable String id,ModelMap map){
+        map.put("articlesEntity",articlesService.get(id));
+        return "operation_center/articles/detail";
     }
 
 }

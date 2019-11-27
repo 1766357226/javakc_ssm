@@ -23,7 +23,7 @@
                           	</div>
 							<label  class="col-sm-2 control-label">类别</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="typeName" name="typeName" value="${entity.typeName}"/>
+								<input class="form-control" id="typeName" name="typeId" value="${entity.typeName}"/>
 							</div>
                        	</div>
                        	<div class="form-group">
@@ -56,10 +56,20 @@
 								<input class="form-control" id="goodsSum" name="goodsSum" value="${entity.goodsSum}" />
 							</div>
                        	</div>
-                       	<div class="form-group">
-							<label class="col-sm-2 control-label" >退换货：</label>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="goodsSales">30天销量:</label>
 							<div class="col-sm-4">
-								<zhg:select value="${entity.ifHexchange}" codeTp="ifHexchange"></zhg:select>
+								<input class="form-control" id="goodsSales" name="goodsSales" value="${entity.goodsSales}"/>
+							</div>
+							<label class="col-sm-2 control-label" for="goodsStatus">状态:</label>
+							<div class="col-sm-4">
+								<zhg:select codeTp="goodsStatus" name="goodsStatus" cls="form-control" value="${entity.goodsStatus}" def="true"></zhg:select>
+							</div>
+						</div>
+                       	<div class="form-group">
+							<label class="col-sm-2 control-label" for="ifHexchange">退换货：</label>
+							<div class="col-sm-4">
+								<zhg:select codeTp="ifHexchange" name="ifHexchange" cls="form-control" value="${entity.ifHexchange}" def="true"></zhg:select>
 							</div>
 							<label class="col-sm-2 control-label" for="goodsSearch">搜索关键字：</label>
 							<div class="col-sm-4">
@@ -72,7 +82,12 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label" >供应商:</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="supName" name="supName" value="${entity.supName}"/>
+								<select  class="form-control input-medium" name="supId" >
+
+									<c:forEach var="sup" items="${supList}">
+										<option value="${sup.supId}" name="supId" >${sup.supName}</option>
+									</c:forEach>
+								</select>
 							</div>
 							<label class="col-sm-2 control-label" for="storageCondition">储存条件:</label>
 							<div class="col-sm-4">
@@ -155,10 +170,18 @@
 							<tbody>
 								<tr >
 									<td>
-										${entity.articleName}
+										<select  class="form-control input-medium" name="articleId">
+											<c:forEach var="art" items="${articleList}">
+												<option value="${art.articleId}">${entity.articleName}</option>
+											</c:forEach>
+										</select>
 									</td>
 									<td>
-                                      ${entity.artTypeName}
+										<select  class="form-control input-medium" name="articleTypeId" >
+											<c:forEach var="type" items="${typeList}">
+												<option value="${type.articleTypeId}" >${type.typeName}</option>
+											</c:forEach>
+										</select>
 									</td>
 									<td>
 										<button type="button" class="btn btn-inverse" data-toggle="modal" id="info" name="product/deleteArt.do">移除</button>

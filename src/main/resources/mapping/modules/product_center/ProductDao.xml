@@ -64,12 +64,12 @@
            GOODS_DESCRIBTION,PRO_TIME,GOODS_IFHEXCHANGE,GOODS_SUM,GOODS_STORAGE_CONDITION,
            GOODS_BRAND,GOODS_SAVE_TIME,GOODS_ADDRESS,GOODS_PACEING,
            GOODS_WATER,GOODS_UNIT,GOODS_WEIGHT,GOODS_SALES,
-           GOODS_STATUS,GOODS_SEARCH,TYPE_ID,ARTICLE_ID,SUP_ID)
+           GOODS_STATUS,GOODS_SEARCH,TYPE_ID,ARTICLE_ID,SUP_ID,article_type_id)
 		 VALUES
 			(#{goodsId},#{goodsName},#{goodsNumber},#{viewPrice},#{goodsPrice},#{realPrice},#{goodsDescripte},
 			#{proTime},#{ifHexchange},#{goodsSum},#{storageCondition},#{goodsBrand},#{goodsSavetime},
 			#{goodsAddress},#{goodsPackage},#{goodsWater},#{goodsUnit},#{goodsWeight},#{goodsSales},#{goodsStatus},
-			#{goodsStatus},#{goodsSearch},#{typeId},#{articleId},#{supId})
+			#{goodsStatus},#{goodsSearch},#{typeId},#{articleId},#{supId},#{articleTypeId})
 	</insert>
    <insert id="insertRelation" parameterType="Map">
       INSERT INTO CS_GOODS_SPAN(GOODS_ID, SPAN_ID) VALUES(#{goodsId},#{spanId})
@@ -100,11 +100,11 @@
 		UPDATE CS_GOODS
 		SET
 		   GOODS_NAME = #{goodsName}, GOODS_NUMBER = #{goodsNumber},GOODS_VIEW_PRICE=#{viewPrice}, GOODS_PRICE=#{goodsPrice},
-		   GOODS_REAL_PRICE=#{realPrice}, GOODS_DESCRIBTION=#{goodsDescribe}, PRO_TIME=#{proTime},
+		   GOODS_REAL_PRICE=#{realPrice}, GOODS_DESCRIBTION=#{goodsDescripte}, PRO_TIME=#{proTime},
            GOODS_IFHEXCHANGE=#{ifHexchange}, GOODS_SUM=#{goodsSum},GOODS_STORAGE_CONDITION=#{storageCondition},
            GOODS_BRAND=#{goodsBrand},GOODS_SAVE_TIME=#{goodsSavetime},GOODS_ADDRESS=#{goodsAddress},GOODS_PACEING=#{goodsPackage},
            GOODS_WATER=#{goodsWater},GOODS_UNIT=#{goodsUnit},GOODS_WEIGHT=#{goodsWeight},GOODS_SALES=#{goodsSales},
-           GOODS_STATUS=#{goodsStatus},GOODS_SEARCH=#{goodsSearch},TYPE_ID=#{typeId},ARTICLE_ID=#{articleId},SUP_ID=#{supId}
+           GOODS_STATUS=#{goodsStatus},GOODS_SEARCH=#{goodsSearch},TYPE_ID=#{typeId},ARTICLE_ID=#{articleId},SUP_ID=#{supId},article_type_id=#{articleTypeId}
         WHERE GOODS_ID = #{goodsId}
 	</update>
     <update id="updateStatus">

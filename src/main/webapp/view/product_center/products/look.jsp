@@ -62,51 +62,51 @@
                        	<div class="form-group">
                           	<label class="col-sm-2 control-label" for="goodsName">名称:</label>
                           	<div class="col-sm-4">
-                            	<input class="form-control" id="goodsName" name="goodsName"value="${entity.goodsName}"/>
+                            	<input class="form-control" id="goodsName" name="goodsName"value="${entity.goodsName}" disabled/>
                           	</div>
 							<label  class="col-sm-2 control-label">类别</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="typeName" name="typeName" value="${entity.typeName}"/>
+								<input class="form-control" id="typeName" name="typeName" value="${entity.typeName}"disabled/>
 							</div>
                        	</div>
                        	<div class="form-group">
                           	<label class="col-sm-2 control-label" for="goodsNumber">编号:</label>
                           	<div class="col-sm-4">
-                            	<input class="form-control" id="goodsNumber" name="goodsNumber" value="${entity.goodsNumber}"/>
+                            	<input class="form-control" id="goodsNumber" name="goodsNumber" value="${entity.goodsNumber}" disabled/>
                           	</div>
 							<label class="col-sm-2 control-label" for="viewPrice">参考价:</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="viewPrice" name="viewPrice"  value="${entity.viewPrice}" />
+								<input class="form-control" id="viewPrice" name="viewPrice"  value="${entity.viewPrice}" disabled/>
 							</div>
                        	</div>
                        	<div class="form-group">
                           	<label class="col-sm-2 control-label" for="goodsPrice">销售价:</label>
                           	<div class="col-sm-4">
-                            	<input class="form-control" id="goodsPrice" name="goodsPrice" value="${entity.goodsPrice}"/>
+                            	<input class="form-control" id="goodsPrice" name="goodsPrice" value="${entity.goodsPrice}"disabled/>
                           	</div>
 							<label class="col-sm-2 control-label" for="realPrice">成本价:</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="realPrice" name="realPrice"  value="${entity.realPrice}"/>
+								<input class="form-control" id="realPrice" name="realPrice"  value="${entity.realPrice}"disabled/>
 							</div>
                        	</div>
                        	<div class="form-group">
                           	<label class="col-sm-2 control-label" for="goodsDescripte">商品简介:</label>
                           	<div class="col-sm-4">
-                            	<input class="form-control" id="goodsDescripte" name="goodsDescripte" value="${entity.goodsDescripte}" />
+                            	<input class="form-control" id="goodsDescripte" name="goodsDescripte" value="${entity.goodsDescripte}"disabled />
                           	</div>
 							<label class="col-sm-2 control-label" for="goodsSum">库存：</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="goodsSum" name="goodsSum" value="${entity.goodsSum}" />
+								<input class="form-control" id="goodsSum" name="goodsSum" value="${entity.goodsSum}"disabled />
 							</div>
                        	</div>
                        	<div class="form-group">
 							<label class="col-sm-2 control-label" >退换货：</label>
 							<div class="col-sm-4">
-								<zhg:select value="${entity.ifHexchange}" codeTp="ifHexchange"></zhg:select>
+								<zhg:show value="${entity.ifHexchange}" codeTp="ifHexchange" ></zhg:show>
 							</div>
 							<label class="col-sm-2 control-label" for="goodsSearch">搜索关键字：</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="goodsSearch" name="goodsSearch" value="${entity.goodsSearch}"/>
+								<input class="form-control" id="goodsSearch" name="goodsSearch" value="${entity.goodsSearch}"disabled/>
 							</div>
                        	</div>
 					</fieldset>
@@ -117,47 +117,47 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label" >供应商:</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="supId" name="supId" value="${entity.supName}"/>
+								<input class="form-control" id="supId" name="supId" value="${entity.supName}"disabled/>
 							</div>
 							<label class="col-sm-2 control-label" for="storageCondition">储存条件:</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="storageCondition" name="storageCondition" value="${entity.storageCondition}"/>
+								<input class="form-control" id="storageCondition" name="storageCondition" value="${entity.storageCondition}"disabled/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label" for="goodsBrand">商品品牌:</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="goodsBrand" name="goodsBrand" value="${entity.goodsBrand}"/>
+								<input class="form-control" id="goodsBrand" name="goodsBrand" value="${entity.goodsBrand}"disabled/>
 							</div>
 							<label class="col-sm-2 control-label" for="goodsSavetime">保质期:</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="goodsSavetime" name="goodsSavetime" value="${entity.goodsSavetime}" />
+								<input class="form-control" id="goodsSavetime" name="goodsSavetime" value="${entity.goodsSavetime}"disabled />
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="goodsAddress">产地:</label>
+							<label class="col-sm-2 control-label" >产地:</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="goodsAddress" name="goodsAddress" value="${entity.goodsAddress}" />
+								<input class="form-control" id="goodsAddress" name="goodsAddress" value="${entity.goodsAddress}"disabled />
 							</div>
-							<label class="col-sm-2 control-label" for="goodsPackage">包装:</label>
+							<label class="col-sm-2 control-label" >包装:</label>
 							<div class="col-sm-4">
-								<zhg:select codeTp="package" name="goodsPackage" cls="form-control" value="${entity.goodsPackage}" def="true"></zhg:select>
+                               <zhg:show codeTp="package" value="${entity.goodsPackage}"></zhg:show>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="goodsWater">水体:</label>
+							<label class="col-sm-2 control-label" >水体:</label>
 							<div class="col-sm-4">
-								<zhg:select codeTp="goodsWater" name="goodsWater" value="${entity.goodsWater}" cls="form-control" def="true"></zhg:select>
+                                <zhg:show value="${entity.goodsWater}" codeTp="goodsWater"></zhg:show>
 							</div>
-							<label class="col-sm-2 control-label" for="goodsUnit">单位:</label>
+							<label class="col-sm-2 control-label" >单位:</label>
 							<div class="col-sm-4">
-								<zhg:select codeTp="goodsUnit" name="goodsUnit" cls="form-control" value="${entity.goodsUnit}" def="true"></zhg:select>
+                                <zhg:show value="${entity.goodsUnit}" codeTp="goodsUnit"></zhg:show>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label" for="goodsWeight">净含量:</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="goodsWeight" name="goodsWeight" value="${entity.goodsWeight}"/>
+								<input class="form-control" id="goodsWeight" name="goodsWeight" value="${entity.goodsWeight}"disabled/>
 							</div>
 						</div>
 					</fieldset>

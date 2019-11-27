@@ -55,16 +55,17 @@
 						                <td><input type="checkbox" name="ids" value="${u.goodsId }"/></td>
 											<%-- <td>${v.count+(page.pageNo-1)*page.pageSize }</td>--%>
 						                <td width="300px">
-											<span>商品编码:${u.goodsNumber}</span><br>
+											<span>商品编码:${u.goodsNumber}</span>
 											<span>商品类型:${u.typeName}</span><br>
 											<span>${u.goodsName }</span><br>
 											<span class="label label-info">
 												<c:forEach items="${u.spanList}" var="r">
 													${r}
 												</c:forEach>
-												<button type="button" class="btn btn-primary" data-toggle="modal" onclick="updateSpan()"/>
 											</span>
-
+											<span>
+											<button type="button" class="btn btn-primary" data-toggle="modal" onclick="updateSpan()"></button>
+											</span>
 										</td>
 						                <td>零售价：￥${u.goodsPrice }</td>
 						                <td>${u.goodsSum}</td>

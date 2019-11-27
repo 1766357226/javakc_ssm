@@ -4,7 +4,7 @@
 	<head>
 		<title>菜单展示列表页面</title>
 		<%@ include file="../../../common/jsp/header.jsp"%>
-		<link href="<%=path%>static/css/plugins/treegrid/jquery.treegrid.css" rel="stylesheet">
+
 	</head>
 	<body>
 		<div class="wrapper wrapper-content animated fadeInRight">
@@ -15,22 +15,19 @@
 							<thead>
 					            <tr>
 					                <th>选择</th>
-					                <th>菜单名称</th>
-					                <th>菜单级别</th>
+					                <th>商品名称</th>
+
 					            </tr>
 					        </thead>
 					        <tbody>
 								<c:forEach var="m" items="${page }" varStatus="v">
-									<tr class="treegrid-${m.menuId } treegrid-parent-${m.menuPid }">
+									<tr>
 										<td>
-											<c:if test="${m.menuLevel != 3 }">
-												<input type="radio" name="menuPid" value="${m.menuId }" value1="${m.menuName }" value2="${m.menuLevel }"/>
-											</c:if>
+											<input type="radio" name="goodsId" value="${m.goodsId }" value1="${m.goodsName }" value2="${m.goodsNumber }" value3="${m.typeName}" value4="${m.goodsStatus}"/>
 										</td>
-										<td>${m.menuName }</td>
-										<td>
-											<zhg:show value="${m.menuLevel }" codeTp="level"></zhg:show>
-										</td>
+
+										<td>${m.goodsName }</td>
+
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -38,7 +35,7 @@
 						<div class="col-sm-8">
 		                	<div class="btn-group" role="group">
 			                	<button type="button" class="btn btn-primary" data-toggle="modal" id="ascertain">
-		                            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>确定
+		                            <i class="glyphicon glyphicon-plus" aria-hidden="true" ></i>确定
 		                        </button>
 		                        <button type="button" class="btn btn-danger" data-toggle="modal" id="shutdo">
 		                            <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>关闭
@@ -51,19 +48,18 @@
 		</div>
 		<script type="text/javascript" src="<%=path%>static/js/plugins/treegrid/jquery.treegrid.min.js"></script>
 		<script type="text/javascript" src="<%=path%>static/js/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
+		<script type="text/javascript" src="${path }/view/product_center/products_span/js/menu-create.js"></script>
+
 		<script type="text/javascript">
 			$(function()
 			{
-				$('.tree').treegrid(
-				{
-					treeColumn: 1
-				});
-				
+
+
 				var index = parent.layer.getFrameIndex(window.name);
-				
+
 				$('#ascertain').click(function()
 				{
-					var count = $('[name=menuPid]:checked').length;
+					var count = $('[name=goodsId]:checked').length;
 					if(count == 0)
 					{
 						layer.msg('怎么着, 没有喜欢的?', {icon: 4});
@@ -71,22 +67,34 @@
 					}
 					else
 					{
-						var id = $('[name=menuPid]:checked').val();
-						var name = $('[name=menuPid]:checked').attr('value1');
-						var level = $('[name=menuPid]:checked').attr('value2');
-						
-						parent.$('#menupid').val(name);
-						parent.$('#menupidValue').val(id);
-						parent.$('#menulevel').val(++level);
-					    parent.layer.close(index);
+						var id = $('[name=goodsId]:checked').val();
+						var name = $('[name=goodsId]:checked').attr('value1');
+						var number = $('[name=goodsId]:checked').attr('value2');
+						var typename = $('[name=goodsId]:checked').attr('value3');
+						var status = $('[name=goodsId]:checked').attr('value4');
+
+						parent.$('#goodid').val(name);
+						parent.$('#goodsName').val(id);
+						parent.$('#goodsNumber').val(number);
+                        parent.$('#typeName').val(typename);
+                        parent.$('#goodsStatus').val(status);
+
+                        parent.layer.close(index);
 					}
 				});
-				
+
 				$('#shutdo').click(function()
 				{
 					parent.layer.close(index);
 				});
+
+				$('#ascertain').click(function () {
+
+					window.opener
+				})
 			});
+
+
 		</script>
 	</body>
 </html>

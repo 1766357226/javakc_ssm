@@ -142,30 +142,32 @@
 					</fieldset>
 					<fieldset>
 						<legend>相关文章</legend>
-                        <div class="form-group">
-                            <label  class="col-sm-2 control-label">文章标题</label>
-                            <div class="col-sm-4">
-                                <div class="col-sm-4">
-                                    <select  class="form-control input-medium" >
-                                        <option >请选择</option>
-                                        <c:forEach var="art" items="${artList}">
-                                            <option value="${art.articleId}">${art.articleName}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
-                            <label  class="col-sm-2 control-label">文章分组</label>
-                            <div class="col-sm-4">
-                                <div class="col-sm-4">
-                                    <select  class="form-control input-medium" >
-                                        <option >请选择</option>
-                                        <c:forEach var="type" items="${typeList}">
-                                            <option value="${type.typeId}">${type.artTypeName}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+						<table class="table table-striped table-bordered table-hover table-condensed">
+							<thead>
+							<tr>
+								<th>文章标题</th>
+								<th>文章类型</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr >
+								<td>
+									<select  class="form-control input-medium" >
+										<c:forEach var="art" items="${articleList}">
+											<option value="${art.articleId}">${art.articleName}</option>
+										</c:forEach>
+									</select>
+								</td>
+								<td>
+									<select  class="form-control input-medium" >
+										<c:forEach var="type" items="${typeList}">
+											<option value="${type.articleTypeId}">${type.typeName}</option>
+										</c:forEach>
+									</select>
+								</td>
+							</tr>
+							</tbody>
+						</table>
 					</fieldset>
                     <fieldset>
                         <div class="form-group">
