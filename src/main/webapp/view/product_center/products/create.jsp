@@ -22,7 +22,14 @@
                           	</div>
 							<label  class="col-sm-2 control-label">类别</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="typeId" name="typeId" type="text" />
+                                <div class="col-sm-4">
+                                    <select  class="form-control input-medium" >
+                                        <option >请选择</option>
+                                        <c:forEach var="t" items="${goodsTypeList}">
+                                            <option value="${t.typeId}">${t.typeName}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
 							</div>
                        	</div>
                        	<div class="form-group">
@@ -71,9 +78,12 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label">供应商:</label>
 							<div class="col-sm-4">
+								<select  class="form-control input-medium" >
+                                    <option >请选择</option>
 								<c:forEach var="sup" items="${supList}">
-								<zhg:select codeTp="" value="${sup.supName}" def="true"></zhg:select>
+                                    <option value="${sup.supId}">${sup.supName}</option>
 								</c:forEach>
+                                </select>
 							</div>
 							<label  class="col-sm-2 control-label" for="storageCondition">储存条件:</label>
 							<div class="col-sm-4">
@@ -132,7 +142,32 @@
 					</fieldset>
 					<fieldset>
 						<legend>相关文章</legend>
-
+						<table class="table table-striped table-bordered table-hover table-condensed">
+							<thead>
+							<tr>
+								<th>文章标题</th>
+								<th>文章类型</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr >
+								<td>
+									<select  class="form-control input-medium" >
+										<c:forEach var="art" items="${articleList}">
+											<option value="${art.articleId}">${art.articleName}</option>
+										</c:forEach>
+									</select>
+								</td>
+								<td>
+									<select  class="form-control input-medium" >
+										<c:forEach var="type" items="${typeList}">
+											<option value="${type.articleTypeId}">${type.typeName}</option>
+										</c:forEach>
+									</select>
+								</td>
+							</tr>
+							</tbody>
+						</table>
 					</fieldset>
                     <fieldset>
                         <div class="form-group">

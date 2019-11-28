@@ -23,5 +23,9 @@
          select span_id as spanId,span_number as spanNumber,span_descript as spanDescript,span_name as spanName from cs_good_span where span_id=#{spanId}
     </select>
 
+    <update id="update">
+         update CS_GOOD_SPAN set span_name=#{spanName},span_descript=#{spanDescript} where span_id=#{spanId}
+    </update>
+
 	
 </mapper>

@@ -21,5 +21,15 @@
         insert into cs_goods(span_id,span_number,span_descript,span_name) values (#{spanId},#{spanNumber},#{spanDescript},#{spanName})
     </insert>
 
+    <update id="update">
+         update cs_goods set goods_name=#{goodsName},goods_Number=#{goodsNumber},goods_status=#{goodsStatus} where goods_id=#{goodsId}
+    </update>
+
+    <select id="get" resultType="com.zhg.javakc.modules.product_center.products_span.entity.SpanGoodsEntity">
+         select g.goods_id as goodsId from cs_goods g,cs_good_span p,cs_goods_span r,goods_type t where
+        r.goods_id=g.goods_id and r.span_id=p.span_id and t.type_id=g.type_id
+        and p.span_id = #{id}
+    </select>
+
 </mapper>
 

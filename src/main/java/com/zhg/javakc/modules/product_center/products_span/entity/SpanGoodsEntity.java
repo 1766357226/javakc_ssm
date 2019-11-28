@@ -15,6 +15,16 @@ public class SpanGoodsEntity extends BaseEntity<SpanGoodsEntity> {
 
     private Integer goodsSum;
 
+    private String spanId;
+
+    public String getSpanId() {
+        return spanId;
+    }
+
+    public void setSpanId(String spanId) {
+        this.spanId = spanId;
+    }
+
     public Integer getGoodsSum() {
         return goodsSum;
     }

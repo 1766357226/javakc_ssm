@@ -30,6 +30,7 @@
        <result property="articleName" column="article_name"/>
        <result property="typeName" column="type_name"/>
        <result property="supName" column="sup_name"/>
+       <result property="artTypeName" column="article_type_name"/>
       <collection property="spanList" column="span_id" javaType="ArrayList" ofType="String">
          <result column="span_ID" />
       </collection>
@@ -44,12 +45,13 @@
        </sql>
 
         <select id="findList" resultMap="goodsSpan">
-           SELECT <include refid="allColumn"></include>,gs.span_Name as SPAN_ID,a.article_name ,t.type_name ,s.sup_name  from
-           CS_GOODS c,cs_articles a, cs_good_span gs, goods_type t,cs_goods_span cs, cs_supplier s
+           SELECT <include refid="allColumn"></include>,gs.span_Name as SPAN_ID,a.article_name ,t.type_name ,s.sup_name,st.article_type_name  from
+           CS_GOODS c,cs_articles a, cs_good_span gs, goods_type t,cs_goods_span cs, cs_supplier s,cs_articles_type st
            <where>
            c.GOODS_id=cs.goods_id
            and cs.span_id=gs.span_id
            and c.article_id=a.article_id
+           and a.article_type_id=st.article_type_id
            and c.type_id=t.type_id
            and c.sup_id=s.sup_id
            </where>
@@ -62,12 +64,12 @@
            GOODS_DESCRIBTION,PRO_TIME,GOODS_IFHEXCHANGE,GOODS_SUM,GOODS_STORAGE_CONDITION,
            GOODS_BRAND,GOODS_SAVE_TIME,GOODS_ADDRESS,GOODS_PACEING,
            GOODS_WATER,GOODS_UNIT,GOODS_WEIGHT,GOODS_SALES,
-           GOODS_STATUS,GOODS_SEARCH,TYPE_ID,ARTICLE_ID,SUP_ID)
+           GOODS_STATUS,GOODS_SEARCH,TYPE_ID,ARTICLE_ID,SUP_ID,article_type_id)
 		 VALUES
 			(#{goodsId},#{goodsName},#{goodsNumber},#{viewPrice},#{goodsPrice},#{realPrice},#{goodsDescripte},
 			#{proTime},#{ifHexchange},#{goodsSum},#{storageCondition},#{goodsBrand},#{goodsSavetime},
 			#{goodsAddress},#{goodsPackage},#{goodsWater},#{goodsUnit},#{goodsWeight},#{goodsSales},#{goodsStatus},
-			#{goodsStatus},#{goodsSearch},#{typeId},#{articleId},#{supId})
+			#{goodsStatus},#{goodsSearch},#{typeId},#{articleId},#{supId},#{articleTypeId})
 	</insert>
    <insert id="insertRelation" parameterType="Map">
       INSERT INTO CS_GOODS_SPAN(GOODS_ID, SPAN_ID) VALUES(#{goodsId},#{spanId})
@@ -81,12 +83,13 @@
    </insert>
 
    <select id="get" resultMap="goodsSpan">
-      SELECT <include refid="allColumn"></include>,gs.span_id,a.article_name ,t.type_name ,s.sup_name from
-      CS_GOODS c,cs_articles a,cs_good_span gs,goods_type t,cs_goods_span cs,cs_supplier s
+      SELECT <include refid="allColumn"></include>,gs.span_id,a.article_name ,t.type_name ,s.sup_name,st.article_type_name from
+      CS_GOODS c,cs_articles a,cs_good_span gs,goods_type t,cs_goods_span cs,cs_supplier s,cs_articles_type st
       <where>
       c.goods_id=cs.goods_id
       and cs.span_id=gs.span_id
       and c.article_id=a.article_id
+      and a.article_type_id=st.article_type_id
       and c.type_id=t.type_id
       and c.sup_id=s.sup_id
       and c.goods_id=#{0}
@@ -97,13 +100,16 @@
 		UPDATE CS_GOODS
 		SET
 		   GOODS_NAME = #{goodsName}, GOODS_NUMBER = #{goodsNumber},GOODS_VIEW_PRICE=#{viewPrice}, GOODS_PRICE=#{goodsPrice},
-		   GOODS_REAL_PRICE=#{realPrice}, GOODS_DESCRIBTION=#{goodsDescribe}, PRO_TIME=#{proTime},
+		   GOODS_REAL_PRICE=#{realPrice}, GOODS_DESCRIBTION=#{goodsDescripte}, PRO_TIME=#{proTime},
            GOODS_IFHEXCHANGE=#{ifHexchange}, GOODS_SUM=#{goodsSum},GOODS_STORAGE_CONDITION=#{storageCondition},
            GOODS_BRAND=#{goodsBrand},GOODS_SAVE_TIME=#{goodsSavetime},GOODS_ADDRESS=#{goodsAddress},GOODS_PACEING=#{goodsPackage},
            GOODS_WATER=#{goodsWater},GOODS_UNIT=#{goodsUnit},GOODS_WEIGHT=#{goodsWeight},GOODS_SALES=#{goodsSales},
-           GOODS_STATUS=#{goodsStatus},GOODS_SEARCH=#{goodsSearch},TYPE_ID=#{typeId},ARTICLE_ID=#{articleId},SUP_ID=#{supId}
+           GOODS_STATUS=#{goodsStatus},GOODS_SEARCH=#{goodsSearch},TYPE_ID=#{typeId},ARTICLE_ID=#{articleId},SUP_ID=#{supId},article_type_id=#{articleTypeId}
         WHERE GOODS_ID = #{goodsId}
 	</update>
+    <update id="updateStatus">
+        update cs_goods set goods_Status=2 where goods_id=#{0}
+    </update>
 
    <delete id="delete" parameterType="java.lang.String">
       <![CDATA[

@@ -55,22 +55,24 @@
 						                <td><input type="checkbox" name="ids" value="${u.goodsId }"/></td>
 											<%-- <td>${v.count+(page.pageNo-1)*page.pageSize }</td>--%>
 						                <td width="300px">
-											<span>商品编码:${u.goodsNumber}</span><br>
+											<span>商品编码:${u.goodsNumber}</span>
 											<span>商品类型:${u.typeName}</span><br>
 											<span>${u.goodsName }</span><br>
-											<span>
+											<span class="label label-info">
 												<c:forEach items="${u.spanList}" var="r">
 													${r}
 												</c:forEach>
 											</span>
-											<button type="button" class="btn btn-success" data-toggle="modal" id="updateSpan"/>
+											<span>
+											<button type="button" class="btn btn-primary" data-toggle="modal" onclick="updateSpan()"></button>
+											</span>
 										</td>
 						                <td>零售价：￥${u.goodsPrice }</td>
 						                <td>${u.goodsSum}</td>
 										<td>${u.goodsSales}</td>
 										<td><zhg:show codeTp="goodsStatus" value="${u.goodsStatus}"></zhg:show></td>
 										<td>
-											<button type="button" class="btn btn-danger"  >下架</button>
+											<button type="button" class="btn btn-danger" onclick="updateStatus('product/updateStatus')" >下架</button>
 											<button type="button" class="btn btn-success" data-toggle="modal" onclick="update('product/get')" >编辑</button>
 											<button type="button" class="btn btn-primary" onclick="look('product/look')">详情</button>
 										</td>

@@ -65,8 +65,17 @@ public class Producte extends BaseEntity<Producte> {
     private String typeName;
     private String supName;
     private String articleName;
+    private String artTypeName;
     private String spanName;
     private List<String> spanList;
+
+    public String getArtTypeName() {
+        return artTypeName;
+    }
+
+    public void setArtTypeName(String artTypeName) {
+        this.artTypeName = artTypeName;
+    }
 
     public String getTypeName() {
         return typeName;
