@@ -2,6 +2,7 @@ package com.zhg.javakc.modules.operation_center.articles.entity;
 
 import com.zhg.javakc.base.entity.BaseEntity;
 
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -42,21 +43,7 @@ public class ArticlesEntity extends BaseEntity<ArticlesEntity> {
      *Author:liujun
      *外键
      */
-    // @ManyToMany
-    // @JoinTable(
-    //    //     中间表
-    //    name = "article_cen",
-    //         //中间表外键
-    //         joinColumns ={
-    //            @JoinColumn(name = "articleId")
-    //         },
-    //         inverseJoinColumns = {
-    //            @JoinColumn(name = "articleTypeId")
-    //         }
-    // )
-    // private List<ArticlesEntity> articles;
-
-
+    private String typeName;
     public String getArticleId() {
         return articleId;
     }
@@ -103,5 +90,13 @@ public class ArticlesEntity extends BaseEntity<ArticlesEntity> {
 
     public void setIfRecommend(String ifRecommend) {
         this.ifRecommend = ifRecommend;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }

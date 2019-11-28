@@ -10,4 +10,8 @@ function detail(url) {
         // alert(url);
         $("#searchForm").attr('action', url).submit();
     }
+
+}
+function search() {
+    $("#searchForm").submit();
 }

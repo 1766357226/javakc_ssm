@@ -4,7 +4,6 @@
 <head>
 	<title>文章管理展示列表页面</title>
 	<%@ include file="../../../common/jsp/header.jsp"%>
-
 </head>
 <body>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -21,11 +20,19 @@
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<input class="form-control" id="searchName" name="articleName" value="${articlesEntity.articleName}" type="text" placeholder="请输入文章标题"/>
+					<input class="form-control" name="articleName" value="${articlesEntity.articleName}" type="text" placeholder="请输入文章标题"/>
 				</div>
-				<div class="col-sm-6">
-
-				</div>
+				<div class="col-sm-2">
+                    <select name="typeName">
+                        <option value="" >请选择</option>
+                        <c:forEach var="a" items="${page.list}" varStatus="v">
+                            <option value="${a.typeName}" ${articlesEntity.typeName==a.typeName?"selected":"" }>${a.typeName}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" onclick="search()" name="article/queryArticle.do" />查询
+                </div>
 				<!-- ------------按钮组 end------------ -->
 				<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 				<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
@@ -36,7 +43,7 @@
 						<th>标题</th>
 						<th>浏览量</th>
 						<th>状态</th>
-						<th>文章描述</th>
+						<th>文章类型</th>
 						<th>是否推荐</th>
 						<th>编辑</th>
 					</tr>
@@ -49,7 +56,7 @@
 							<td>${e.articleName }</td>
 							<td>${e.viewNumber}</td>
 							<td><zhg:show value="${e.articleStatus}" codeTp="articleStatus"></zhg:show></td>
-							<td>${e.articleDescripe}</td>
+							<td>${e.typeName}</td>
 							<td><zhg:show value="${e.ifRecommend}" codeTp="ifRecommend"></zhg:show></td>
 							<td>
 								<button type="button" class="btn btn-success" data-toggle="modal" id="update" name="article/view.do">
@@ -70,5 +77,5 @@
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="${path }/view/operation_center/articles/js/articles.js"></script>
+<script type="text/javascript" src="${path}/view/operation_center/articles/js/articles.js"></script>
 </html>
