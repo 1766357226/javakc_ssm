@@ -6,7 +6,27 @@
 		<%@ include file="../../../common/jsp/header.jsp"%>
 		<link href="<%=path%>/static/css/plugins/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet">
 		<script type="text/javascript" src="<%=path%>/static/js/plugins/ztree/jquery.ztree.core-3.5.js"></script>
-		<script type="text/javascript" src="./js/list.js"></script>
+		<script language="JavaScript">
+			$(function () {
+				var tree;
+				var setting={
+					data:{
+						simpleData:{
+							enable:true
+						}
+					}
+				};
+
+				$.post(root+'centertype/queryType.do',function (zNode) {
+					$.fn.zTree.init($("#treeDemo"),setting,zNode)
+				},'json')
+
+				$("#queryByName").click(function () {
+					var typeName=$("#typeName").val();
+					tree.getNodeByParam("name",typeName,"")
+				})
+			})
+		</script>
 	</head>
 	<body>
 		<div class="wrapper wrapper-content animated fadeInRight">
@@ -20,7 +40,7 @@
                 			<button type="button" class="btn btn-primary" data-toggle="modal" id="create" name="product_center/type/create.jsp">
 	                            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>添加
 	                        </button>
-	                        <button type="button" class="btn btn-success" data-toggle="modal" id="update" name="test/view.do">
+	                        <button type="button" class="btn btn-success" data-toggle="modal" id="queryName" name="query/view.do">
 	                            <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>修改
 	                        </button>
 	                        <button type="button" class="btn btn-danger" data-toggle="modal" id="delete" name="test/delete.do">

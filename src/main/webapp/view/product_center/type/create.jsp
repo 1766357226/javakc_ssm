@@ -5,6 +5,70 @@
 		<title>测试添加页面</title>
 		<%@ include file="../../../common/jsp/header.jsp"%>
 		<link href="${path }/static/css/plugins/file-input/fileinput.min.css" rel="stylesheet">
+		<script type="text/javascript" src="<%=path%>static/js/plugins/ztree/jquery.ztree.core-3.5.js"></script>
+		<link href="<%=path%>/static/css/plugins/ztree/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+	</head>
+	<script language="JavaScript">
+		$(function () {
+			var setting = {
+				view: {
+					dblClickExpand: false
+				},
+				data: {
+					simpleData: {
+						enable: true
+					}
+				},
+				callback: {
+					beforeClick: beforeClick,
+					onClick: onClick
+				}
+			};
+
+			$.post(root+'centertype/queryType.do',function(zNodes){
+				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+			},'json')
+		})
+
+		function beforeClick(treeId, treeNode) {
+
+		}
+
+		function onClick(e, treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+					nodes = zTree.getSelectedNodes(),
+					v = "";
+			id ="";
+			nodes.sort(function compare(a,b){return a.id-b.id;});
+			for (var i=0, l=nodes.length; i<l; i++) {
+				v += nodes[i].name + ",";
+				id += nodes[i].id + ",";
+			}
+			if (v.length > 0 ) v = v.substring(0, v.length-1);
+			if (id.length > 0 ) id = id.substring(0, id.length-1);
+			var nodeName = $("#nodeName");
+			nodeName.attr("value", v);
+			$("#typeParentId").val(id);
+		}
+
+		function showMenu() {
+			var cityObj = $("#nodeName");
+			var cityOffset = $("#nodeName").offset();
+			$("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+
+			$("body").bind("mousedown", onBodyDown);
+		}
+		function hideMenu() {
+			$("#menuContent").fadeOut("fast");
+			$("body").unbind("mousedown", onBodyDown);
+		}
+		function onBodyDown(event) {
+			if (!(event.target.id == "menuBtn" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
+				hideMenu();
+			}
+		}
+	</script>
+
 	</head>
 	<body>
 		<div class="wrapper wrapper-content animated fadeInRight">
@@ -13,8 +77,17 @@
 			</div>
 			<div class="ibox float-e-margins">
 				<form action="${path }/centertype/save.do" method="post" class="form-horizontal" role="form">
-                    <fieldset>
+                    <input type="text" id="typeParentId" name="typeParentId" value="">
+					<fieldset>
                         <legend>基础类目信息</legend>
+						<div class="form-group">
+							<a id="menuBtn" href="#" onclick="showMenu()" class="col-sm-2 control-label">选择上一级分类</a>
+							<div class="col-sm-2">
+								<input class="form-control" type="text" id="nodeName" name="nodeName">
+								<div id="menuContent" class="menuContent" type="display:none"></div>
+								<ul id="treeDemo" class="ztree"></ul>
+							</div>
+						</div>
                        <div class="form-group">
                           <label class="col-sm-2 control-label" >分类名称</label>
                           <div class="col-sm-2">

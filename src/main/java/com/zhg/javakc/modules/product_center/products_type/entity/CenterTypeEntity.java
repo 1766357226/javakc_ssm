@@ -8,7 +8,15 @@ public class CenterTypeEntity extends BaseEntity<CenterTypeEntity> {
     private String  typeParentId;
     private String typeNum;
     private String typeOpen;
+    private int  typeOrder;
 
+    public void setTypeOrder(int typeOrder) {
+        this.typeOrder = typeOrder;
+    }
+
+    public int getTypeOrder() {
+        return typeOrder;
+    }
 
     public void setTypeOpen(String typeOpen) {
         this.typeOpen = typeOpen;
@@ -58,6 +66,7 @@ public class CenterTypeEntity extends BaseEntity<CenterTypeEntity> {
                 ", typeParentId='" + typeParentId + '\'' +
                 ", typeNum='" + typeNum + '\'' +
                 ", typeOpen='" + typeOpen + '\'' +
+                ", typeOrder=" + typeOrder +
                 '}';
     }
 }

@@ -19,4 +19,9 @@ public class CenterTypeService extends BaseService<CenterTypeDao, CenterTypeEnti
         return typeDao.queryType();
     }
 
+
+    public List<CenterTypeEntity> findByName() {
+        List<CenterTypeEntity> list=typeDao.queryByName();
+        return list;
+    }
 }

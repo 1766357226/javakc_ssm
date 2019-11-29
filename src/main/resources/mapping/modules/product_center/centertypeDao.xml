@@ -10,10 +10,13 @@
         TYPE_NUM "orglevel",
         TYPE_PARENTID "pId",
         DECODE(TYPE_OPEN,0,'false',1,'true') "open"
-        FROM  GOODS_TYPE WHERE  1=1
+        FROM  GOODS_TYPE WHERE  1=1 ORDER BY TYPE_ORDER
     </select>
     <insert id="insert" >
-        INSERT INTO GOODS_TYPE (TYPE_ID,TYPE_NAME,TYPE_NUM,TYPE_PARENTID,TYPE_OPEN) VALUES
-        (#{ typeId},#{typeName},#{typeNum},#{typeParentId},#{typeOpen})
+        INSERT INTO GOODS_TYPE (TYPE_ID,TYPE_NAME,TYPE_NUM,TYPE_PARENTID,TYPE_OPEN,TYPE_ORDER) VALUES
+        (#{ typeId},#{typeName},#{typeNum},#{typeParentId},#{typeOpen},#{typeOrder})
     </insert>
+    <select id="queryByName" resultType="com.zhg.javakc.modules.product_center.products_type.entity.CenterTypeEntity">
+        SELECT TYPE_ID As typeId ,TYPE_NAME AS typeName , TYPE_PARENTID AS typeParentId FROM  GOODS_TYPE
+    </select>
 </mapper>

@@ -8,4 +8,5 @@ import java.util.Map;
 
 public interface CenterTypeDao extends BaseDao<CenterTypeEntity> {
     public List<Map<String, Object>> queryType();
+    public List<CenterTypeEntity> queryByName();
 }
