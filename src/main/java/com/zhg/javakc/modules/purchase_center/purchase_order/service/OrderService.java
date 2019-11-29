@@ -16,4 +16,7 @@ public class OrderService extends BaseService<OrderDao, OrderEntity> {
        page.setList(orderDao.findList(orderEntity));
        return page;
     }
+    public int findByCount(OrderEntity orderEntity){
+        return orderDao.findByCount(orderEntity);
+    }
 }

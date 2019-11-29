@@ -1,8 +1,10 @@
 package com.zhg.javakc.modules.purchase_center.purchase_order.entity;
 
 import com.zhg.javakc.base.entity.BaseEntity;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderEntity extends BaseEntity<OrderEntity> {
     // ## 主键
@@ -33,6 +35,36 @@ public class OrderEntity extends BaseEntity<OrderEntity> {
     private Integer purMoney;
     // ## 供应商名称
     private String supName;
+
+    private List count;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date sdate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date edate;
+
+    public Date getSdate() {
+        return sdate;
+    }
+
+    public void setSdate(Date sdate) {
+        this.sdate = sdate;
+    }
+
+    public Date getEdate() {
+        return edate;
+    }
+
+    public void setEdate(Date edate) {
+        this.edate = edate;
+    }
+
+    public List getCount() {
+        return count;
+    }
+
+    public void setCount(List count) {
+        this.count = count;
+    }
 
     public Integer getPurMoney() {
         return purMoney;

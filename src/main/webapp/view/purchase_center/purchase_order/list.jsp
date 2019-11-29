@@ -4,6 +4,8 @@
 	<head>
 		<title>用户展示列表页面</title>
 		<%@ include file="../../../common/jsp/header.jsp"%>
+
+
 	</head>
 	<body>
 		<div class="wrapper wrapper-content animated fadeInRight">
@@ -12,21 +14,43 @@
 				<div class="col-sm-12">
 					<!-- ------------按钮组 start------------ -->
 	                <div class="alert alert-success" role="alert">订购单详细信息</div>
-					<div class="col-sm-4">
-						<button type="button" class="btn btn-link" onclick="find(0)">全部</button>
-						<button type="button" class="btn btn-link" onclick="find(3)">待确认</button>
-						<button type="button" class="btn btn-link" onclick="find(1)">待入库</button>
-						<button type="button" class="btn btn-link" onclick="find(2)">已关闭</button>
+                    <div class="row">
+                    <div class="col-sm-4" style="color: #0d8ddb">
+						<button type="button" class="btn btn-link" onclick="find(0)">全部${count.count[0]}</button>
+						<button type="button" class="btn btn-link" onclick="find(3)">待确认${count.count[3]}</button>
+						<button type="button" class="btn btn-link" onclick="find(1)">待入库${count.count[1]}</button>
+						<button type="button" class="btn btn-link" onclick="find(2)">已关闭${count.count[2]}</button>
 					</div>
-	                <div class="col-sm-3 col-sm-offset-5">
-	                	<div class="btn-group" role="group">
-	                		<shiro:hasPermission name="user:create">
-			                	<button type="button" class="btn btn-primary" data-toggle="modal" id="add" name="sup/add.do">
-		                            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>添加
-		                        </button>
-	                        </shiro:hasPermission>
-		                 </div>
-	                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <input type="text" name="purNumber" placeholder="请输入采购单编号" value="${entity.purNumber}"/>
+                            <select name="supId">
+                                <option value="" >请选择供应商</option>
+                                <c:forEach var="pur" items="${supName}" varStatus="v">
+                                <option value="${pur.supId}" ${entity.supId==pur.supId?"selected":"" }>${pur.supName}</option>
+                                </c:forEach>
+                            </select>
+                            采购时间
+                            <input type="date" onchange="date(this)" id="logmin" name="sdate" class="input-text Wdate" value="<fmt:formatDate value="${entity.sdate}" pattern="yyyy-MM-dd"/>" style="width:150px;">
+                            至
+                            <input type="date" onchange="date(this)" id="logmax" name="edate"  class="input-text Wdate" value="<fmt:formatDate value="${entity.edate}" pattern="yyyy-MM-dd"/>" style="width:150px;">
+<%--                            value='<f:formatDate value="${pager.sdate}" pattern="yyyy-MM-dd"/>'--%>
+							<button type="button" class="btn btn-primary" data-toggle="modal" onclick="search()" name="order/query.do">
+								<i class="glyphicon glyphicon-search" aria-hidden="true"></i>查询</button>
+                        </div>
+                            <div class="col-sm-2  col-sm-offset-2">
+                                <div class="btn-group" role="group">
+                                    <shiro:hasPermission name="user:create">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" id="add" name="sup/add.do">
+                                            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>添加
+                                        </button>
+                                    </shiro:hasPermission>
+                                </div>
+                            </div>
+
+
+                    </div>
 
 					<!-- ------------按钮组 end------------ -->
 						<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
@@ -55,7 +79,7 @@
 						                <td>${pur.purNumber}</td>
 						                <td>${pur.supName}</td>
 						                <td>${pur.purMoney}</td>
-										<td>${pur.purCreateDate}</td>
+										<td><fmt:formatDate value="${pur.purCreateDate}" pattern="yyyy-MM-dd"/></td>
                                         <td>
                                             <button type="button" class="btn btn-link" onclick="update('sup/view')">编辑</button>
                                             <button type="button" class="btn btn-link" onclick="look('sup/look')">详情</button>
@@ -70,5 +94,6 @@
 			</div>
 		</div>
 	</body>
+
     <script type="text/javascript" src="${path }/view/purchase_center/purchase_order/js/order.js"></script>
 </html>
