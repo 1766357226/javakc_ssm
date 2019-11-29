@@ -23,6 +23,38 @@
         <if test="purType!= null and purType!='' ">
             AND cp.pur_type=#{purType}
         </if>
+        <if test="purNumber!= null and purNumber!='' ">
+            AND cp.pur_Number=#{purNumber}
+        </if>
+        <if test="supId!= null and supId!='' ">
+            AND cp.sup_Id=#{supId}
+        </if>
+        <if test="sdate!= null">
+            AND cp.pur_Check_Date>#{sdate}
+        </if>
+        <if test="edate!= null">
+            AND #{edate}>cp.pur_Check_Date
+        </if>
+
+
+    </select>
+    <select id="findByCount" resultType="int">
+        select count(1) from cs_pur where 1=1
+        <if test="purType!= null and purType!='' ">
+            AND pur_type=#{purType}
+        </if>
+        <if test="purNumber!= null and purNumber!='' ">
+            AND pur_Number=#{purNumber}
+        </if>
+        <if test="supId!= null and supId!='' ">
+            AND sup_Id=#{supId}
+        </if>
+        <if test="sdate!= null">
+            AND pur_Check_Date>#{sdate}
+        </if>
+        <if test="edate!= null">
+            AND #{edate}>pur_Check_Date
+        </if>
     </select>
 
 

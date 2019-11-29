@@ -40,17 +40,6 @@ public class ArtTypeEntity extends BaseEntity<ArtTypeEntity> {
      *分组状态
      */
     private Integer typeStatus;
-    // @ManyToMany
-    // @JoinTable(
-    //     name="article_cen",
-    //         joinColumns = {
-    //             @JoinColumn(name="articleTypeId")
-    //         },
-    //         inverseJoinColumns = {
-    //             @JoinColumn(name ="articleId" )
-    //         }
-    // )
-    // private List<ArticlesEntity> articleType;
 
     public String getArticleTypeId() {
         return articleTypeId;
@@ -91,4 +80,5 @@ public class ArtTypeEntity extends BaseEntity<ArtTypeEntity> {
     public void setTypeStatus(Integer typeStatus) {
         this.typeStatus = typeStatus;
     }
+
 }

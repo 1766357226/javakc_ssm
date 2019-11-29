@@ -4,6 +4,8 @@ import com.zhg.javakc.base.page.Page;
 import com.zhg.javakc.base.util.CommonUtil;
 import com.zhg.javakc.modules.operation_center.articles.entity.ArticlesEntity;
 import com.zhg.javakc.modules.operation_center.articles.service.ArticlesService;
+import com.zhg.javakc.modules.operation_center.articles_type.entity.ArtTypeEntity;
+import com.zhg.javakc.modules.operation_center.articles_type.service.TypeService;
 import com.zhg.javakc.modules.test.entity.TestEntity;
 import com.zhg.javakc.modules.test.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ import java.util.List;
 public class ArticlesController {
     @Autowired
     private ArticlesService articlesService;
+    @Autowired
+    private TypeService typeService;
     @RequestMapping("queryArticle")
     public ModelAndView queryArticle(ArticlesEntity articlesEntity, HttpServletRequest request, HttpServletResponse response){
       ModelAndView modelAndView=new ModelAndView("operation_center/articles/list");

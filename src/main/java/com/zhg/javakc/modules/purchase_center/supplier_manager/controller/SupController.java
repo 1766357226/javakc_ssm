@@ -2,7 +2,7 @@ package com.zhg.javakc.modules.purchase_center.supplier_manager.controller;
 
 import com.zhg.javakc.base.page.Page;
 import com.zhg.javakc.base.util.CommonUtil;
-import com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupGoodsEntity;
+
 import com.zhg.javakc.modules.purchase_center.supplier_manager.entity.SupplierEntity;
 import com.zhg.javakc.modules.purchase_center.supplier_manager.service.SupGoodsService;
 import com.zhg.javakc.modules.purchase_center.supplier_manager.service.SupService;

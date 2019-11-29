@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhg.javakc.modules.operation_center.articles.dao.ArticlesDao">
     <select id="findList" resultType="com.zhg.javakc.modules.operation_center.articles.entity.ArticlesEntity">
-       SELECT ARTICLE_ID AS articleId，ARTICLE_NAME AS articleName,VIEW_NUMBER AS viewNumber,ARTICLE_STATUS AS articleStatus,
-       ARTICLE_DESCRIPE AS articleDescripe, IF_RECOMMEND AS ifRecommend FROM CS_ARTICLES WHERE 1=1
+       SELECT ARTICLE_ID AS articleId，ARTICLE_NAME AS articleName,VIEW_NUMBER AS viewNumber,ARTICLE_STATUS AS articleStatus,ARTICLE_TYPE_NAME AS typeName,
+       ARTICLE_DESCRIPE AS articleDescripe, IF_RECOMMEND AS ifRecommend FROM CS_ARTICLES A,CS_ARTICLES_TYPE T WHERE A.ARTICLE_TYPE_ID=T.ARTICLE_TYPE_ID
         <if test="articleName!='' and articleName!=null">
             AND ARTICLE_NAME LIKE '%'||#{articleName}||'%'
         </if>
-        <if test="articleStatus!='' and articleStatus!=null">
-            AND ARTICLE_STATUS=#{articleStatus}
+        <if test="typeName!='' and typeName!=null">
+            AND ARTICLE_TYPE_NAME=#{typeName}
         </if>
     </select>
     <insert id="insert">
